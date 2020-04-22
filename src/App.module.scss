@@ -1,0 +1,22 @@
+.app{
+    display: grid;
+    grid-template-areas: "header"
+                         "content"
+                         "footer";
+    grid-template-rows: 100px 1fr 50px;
+    grid-template-columns: 1fr;
+    .container{
+        .header{
+            grid-area: header;
+            background: #000;
+        }
+        .content{
+            grid-area: content;
+            background: rgb(155, 34, 34);
+        }
+        .footer{
+            grid-area: footer;
+            background: rgba(20, 17, 168, 0.329);
+        }
+    }
+}
