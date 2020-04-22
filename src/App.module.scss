@@ -1,20 +1,50 @@
-.app{
+.app {
     display: grid;
-    grid-template-areas: "header"
-                         "content"
-                         "footer";
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
     grid-template-rows: 100px 1fr 50px;
     grid-template-columns: 1fr;
-    .container{
-        .header{
+    .container {
+        max-width: 1140px;
+        margin: 0 auto;
+        
+        @media (max-width: 450px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+        @media (max-width: 576px) {
+            .container {
+                max-width: 540px;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 720px;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                max-width: 960px;
+                padding: 0 10px;
+            }
+        }
+
+        .header {
             grid-area: header;
             background: #000;
         }
-        .content{
+        .content {
             grid-area: content;
             background: rgb(155, 34, 34);
         }
-        .footer{
+        .footer {
             grid-area: footer;
             background: rgba(20, 17, 168, 0.329);
         }
