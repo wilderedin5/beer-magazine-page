@@ -1,0 +1,13 @@
+.header{
+    position: relative;
+    .activeLink{
+        color: #fff;
+    }
+    .cart{
+        border: 1px dashed #fff;
+        padding: 5px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

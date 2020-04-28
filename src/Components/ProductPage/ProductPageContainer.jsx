@@ -1,18 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ProductPage from './ProductPage';
-import { getBeersFromAPI } from '../../redux/product-reducer';
+import { getBeersFromAPI, addItemToCart } from '../../redux/product-reducer';
 
-class ProductPageContainer extends React.Component {
-    componentDidMount(){
-        this.props.getBeersFromAPI();
-    }
-    render() {
-        return (
-            <ProductPage beers={this.props.beers} />
-        )
-    }
+const ProductPageContainer = (props) => {
 
+    useEffect(() => {
+        props.getBeersFromAPI();
+    },[])
+
+    return (
+        <ProductPage addItemToCart={props.addItemToCart} beers={props.beers} />
+    )
 }
 
 const mapStateToProps = (state) => {
@@ -21,4 +20,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getBeersFromAPI })(ProductPageContainer);
+export default connect(mapStateToProps, { getBeersFromAPI, addItemToCart })(ProductPageContainer);

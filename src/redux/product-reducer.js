@@ -1,9 +1,11 @@
 import { beerAPI } from "../API/API";
 
 const ADD_BEERS = 'product-reducer/ADD_BEERS';
+const ADD_ITEM_TO_CART = 'product-reducer/ADD_ITEM_TO_CART';
 
 let initialState = {
-    beers: []
+    beers: [],
+    cart: []
 }
 
 const productReducer = (state = initialState, action) => {
@@ -12,6 +14,11 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 beers: [...state.beers, ...action.beers]
+            }
+        case ADD_ITEM_TO_CART:
+            return {
+                ...state,
+                cart: [...state.cart, ...action.beer]
             }
         default:
             return state
@@ -23,8 +30,19 @@ export const addBeers = (beers) => ({
     beers
 });
 
+export const successAddedItemToCart = (beer) => ({
+    type: ADD_ITEM_TO_CART,
+    beer
+});
+
+export const addItemToCart = (beerId) => (dispatch) => {
+    beerAPI.getOneBeer(beerId).then( response => {
+        dispatch(successAddedItemToCart(response.data));
+    });
+}
+
 export const getBeersFromAPI = () => (dispatch) => {
-    beerAPI.getBeer().then( response => {
+    beerAPI.getBeers().then( response => {
         dispatch(addBeers(response.data));
     })
 }

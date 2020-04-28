@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Beer.module.scss';
 
-const Beer = ({image,name,description,date,abv,tips,contributed}) => {
+const Beer = ({image,name,description,date,abv,tips,contributed,addItemToCart,beerId}) => {
     return (
         <div className={style.beer}>
             <div className={style.beerImage}>
@@ -13,6 +13,7 @@ const Beer = ({image,name,description,date,abv,tips,contributed}) => {
             <div><b>Крепость:</b> {abv}</div>
             <div><b>Советы от пивоваров:</b> {tips}</div>
             <div><b>Поставщик:</b> {contributed}</div>
+            <button onClick={() => addItemToCart(beerId)}>Добавить в корзину</button>
         </div>
     )
 }
