@@ -6,7 +6,7 @@ const Cart = (props) => {
         <div>
             {
                 props.cart.map(beer => <Beer image={beer.image_url} name={beer.name} description={beer.description} tips={beer.brewers_tips}
-                    contributed={beer.contributed_by} date={beer.first_brewed} abv={beer.abv} />)
+                    contributed={beer.contributed_by} date={beer.first_brewed} abv={beer.abv} deleteItemFromCart={props.deleteItemFromCart} beerId={beer.id} />)
             }
         </div>
     )
