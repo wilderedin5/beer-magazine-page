@@ -5,12 +5,12 @@ import { NavLink } from 'react-router-dom';
 const Header = (props) => {
     return (
         <div className={style.header}>
-            <NavLink to="/cart" activeClassName={style.activeLink}>
+            <NavLink to="/cart" className={style.link} activeClassName={style.activeLink}>
                 <div className={style.cart}>
-                    корзина
+                    Корзина
                 </div>
             </NavLink>
-            <NavLink exact to="/" activeClassName={style.activeLink}>
+            <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
                 Главная
             </NavLink>
         </div>

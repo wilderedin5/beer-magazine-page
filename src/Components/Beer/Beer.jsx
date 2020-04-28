@@ -14,9 +14,9 @@ const Beer = ({image,name,description,date,abv,tips,contributed,addItemToCart,be
             <div><b>Советы от пивоваров:</b> {tips}</div>
             <div><b>Поставщик:</b> {contributed}</div>
             { addItemToCart ?
-                <button onClick={() => addItemToCart(beerId)}>Добавить в корзину</button>
+                <button className={style.beerBtn} onClick={() => addItemToCart(beerId)}>Добавить в корзину</button>
             :
-                <button onClick={() => deleteItemFromCart(beerId)}>Удалить из корзины</button>
+                <button className={style.beerBtn} onClick={() => deleteItemFromCart(beerId)}>Удалить из корзины</button>
             }
         </div>
     )

@@ -5,11 +5,11 @@ import Footer from './Components/Footer/Footer';
 import ProductPageContainer from './Components/ProductPage/ProductPageContainer';
 import { Route } from 'react-router-dom';
 import CartContainer from './Components/Cart/CartContainer';
+import cn from 'classnames';
 
 const App = () => {
   return (
-    <div className={style.app}>
-      <div className={style.container}>
+    <div className={cn(style.app,style.container)}>
         <div className={style.header}>
           <Header />
         </div>
@@ -19,8 +19,7 @@ const App = () => {
         </div>
         <div className={style.footer}> 
           <Footer />
-        </div>  
-      </div>
+        </div>
     </div>
 
   );

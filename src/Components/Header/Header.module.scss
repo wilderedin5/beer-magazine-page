@@ -1,13 +1,19 @@
 .header{
     position: relative;
-    .activeLink{
+    .link{
         color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        &.activeLink{
+            color: rgb(155, 34, 34);
+        }
     }
     .cart{
-        border: 1px dashed #fff;
-        padding: 5px;
+        border: 1px solid rgb(155, 34, 34);
+        padding: 5px 10px;
         position: absolute;
-        top: 0;
+        top: 50%;
+        transform: translateY(-50%);
         right: 0;
     }
 }
