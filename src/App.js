@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './App.module.scss';
-import Header from './Components/Header/Header';
+import HeaderContainer from './Components/Header/HeaderContainer';
 import Footer from './Components/Footer/Footer';
 import ProductPageContainer from './Components/ProductPage/ProductPageContainer';
 import { Route } from 'react-router-dom';
@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className={cn(style.app,style.container)}>
         <div className={style.header}>
-          <Header />
+          <HeaderContainer />
         </div>
         <div className={style.content}>      
             <Route path="/cart" render={() => <CartContainer /> } />

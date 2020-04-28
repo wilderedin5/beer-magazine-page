@@ -6,14 +6,30 @@
         text-decoration: none;
         &.activeLink{
             color: rgb(155, 34, 34);
+            .cartCount{
+                color: #fff;
+            }
+        }
+        &.cartLink{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
         }
     }
     .cart{
         border: 1px solid rgb(155, 34, 34);
         padding: 5px 10px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 0;
+        position: relative;
+        .cartCount{
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            border: 1px solid green;
+            border-radius: 50%;
+            background: green;
+            padding: 0 5px;
+            font-size: 12px;
+        }
     }
 }
