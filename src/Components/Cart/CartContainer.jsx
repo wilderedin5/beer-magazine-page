@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import Cart from './Cart';
-import { deleteItemFromCart } from '../../redux/product-reducer';
+import { deleteItemFromCart } from '../../redux/cart-reducer';
 
 const mapStateToProps = (state) => {
     return {
-        cart: state.productPage.cart
+        cart: state.cart.cart
     }
 }
 

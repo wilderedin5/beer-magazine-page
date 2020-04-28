@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ProductPage from './ProductPage';
-import { getBeersFromAPI, addItemToCart } from '../../redux/product-reducer';
+import { getBeersFromAPI } from '../../redux/product-reducer';
+import { addItemToCart } from '../../redux/cart-reducer';
 
 const ProductPageContainer = (props) => {
 
