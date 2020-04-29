@@ -5,7 +5,7 @@
         font-weight: 700;
         text-decoration: none;
         &.activeLink{
-            color: rgb(155, 34, 34);
+            color: rgb(3, 173, 3);
             .cartCount{
                 color: #fff;
             }
@@ -15,10 +15,14 @@
             top: 50%;
             transform: translateY(-50%);
             right: 0;
+            &:hover{
+                background: rgba(0, 162, 255, 0.329);
+            }
         }
     }
     .cart{
-        border: 1px solid rgb(155, 34, 34);
+        border: 2px solid #fff;
+        border-radius: 5px;
         padding: 5px 10px;
         position: relative;
         .cartCount{
