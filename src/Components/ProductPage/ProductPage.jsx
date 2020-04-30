@@ -2,15 +2,18 @@ import React from 'react';
 import style from './ProductPage.module.scss';
 import Beer from '../Beer/Beer';
 import Paginator from '../Common/Paginator/Paginator';
+import FilterForm from './FilterForm/FilterForm';
 
 const ProductPage = (props) => {
+    const onSubmit = (formData) => {
+        props.setAbvFilter(formData.abv);
+    }
+
     return (
         <div>
             <div className={style.panel}>
                 <Paginator currentPage={props.currentPage} onPageChanged={props.onPageChanged} totalItemsCount={props.totalItemsCount} pageSize={props.pageSize} />
-                <div className={style.filterBox}>
-                    <button onClick={() => props.setAbvFilter(8)}>Показать с крепостью больше 8</button>
-                </div>
+                <FilterForm onSubmit={onSubmit} />
             </div>
             
             <div className={style.ProductPage}>
