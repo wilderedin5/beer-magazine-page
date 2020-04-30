@@ -3,3 +3,10 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+.panel{
+    display: flex;
+    justify-content: space-between;
+    .filterBox{
+        
+    }
+}
