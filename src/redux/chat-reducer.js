@@ -1,3 +1,5 @@
+const ADD_MESSAGE_TO_CHAT = "chat-reducer/ADD_MESSAGE_TO_CHAT";
+
 let initialState = {
     messages: [
         {id: 1, authorName: "Denis", messageText: "Это первый комментс", liked: null, likeCount: 34},
@@ -13,10 +15,20 @@ let initialState = {
 
 const chatReducer = (state = initialState, action) => {
     switch(action.type){
-        
+        case ADD_MESSAGE_TO_CHAT:
+            return {
+                ...state,
+                messages: [...state.messages, action.message]
+            }
         default:
             return state
     }
 }
+
+export const addMessageToChat = (id,authorName,messageText, liked, likeCount) => ({
+    type: ADD_MESSAGE_TO_CHAT,
+    message: {id, authorName, messageText, liked, likeCount}
+});
+
 
 export default chatReducer;
