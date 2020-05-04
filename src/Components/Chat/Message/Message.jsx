@@ -7,7 +7,14 @@ const Message = (props) => {
             <div>{props.messageText}</div>
             <div className={style.messageMeta}>
                 <div>{props.authorName}</div>
-                <div>{props.likeCount} Лайков</div>
+                <div className={style.likeBox}>
+                    <div>{props.likeCount} Лайков</div>
+                    { props.liked ?
+                        <button onClick={() => props.toggleLikeMessage(props.id,false)}>Убрать лайк</button>
+                        :
+                        <button onClick={() => props.toggleLikeMessage(props.id,true)}>Поставить лайк</button>
+                    }
+                </div>
             </div>
         </div>
     )

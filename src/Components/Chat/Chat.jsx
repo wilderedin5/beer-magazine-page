@@ -11,7 +11,7 @@ const Chat = (props) => {
     return (
         <div>
             {
-                props.messages.map(message => <Message {...message} />)
+                props.messages.map(message => <Message {...message} toggleLikeMessage={props.toggleLikeMessage} />)
             }
             <ChatForm onSubmit={onSubmit} />
         </div>
