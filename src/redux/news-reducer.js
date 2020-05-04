@@ -1,4 +1,4 @@
-
+const DELETE_NEWS = "news-reducer/DELETE_NEWS";
 
 let initialState = {
     news: [
@@ -12,10 +12,19 @@ let initialState = {
 
 const newsReducer = (state = initialState, action) => {
     switch(action.type){
-        
+        case DELETE_NEWS:
+            return {
+                ...state,
+                news: state.news.filter(news => news.id !== action.newsId)
+            }
         default:
             return state
     }
 }
+
+export const deleteNews = (newsId) => ({
+    type: DELETE_NEWS,
+    newsId
+})
 
 export default newsReducer;

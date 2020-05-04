@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import News from './News';
+import { deleteNews } from '../../redux/news-reducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -7,4 +8,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{})(News);
+export default connect(mapStateToProps,{deleteNews})(News);

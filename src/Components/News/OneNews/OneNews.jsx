@@ -8,6 +8,7 @@ const OneNews = (props) => {
             <div>{props.newsText}</div>
             <div><b>Автор:</b> {props.authorName}</div>
             <div><b>Категория:</b> {props.category}</div>
+            <button onClick={() => props.deleteNews(props.id)}>Удалить новость</button>
         </div>
     )
 }
