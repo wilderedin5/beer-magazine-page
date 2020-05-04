@@ -6,6 +6,7 @@ import ProductPageContainer from './Components/ProductPage/ProductPageContainer'
 import { Route } from 'react-router-dom';
 import CartContainer from './Components/Cart/CartContainer';
 import cn from 'classnames';
+import NewsContainer from './Components/News/NewsContainer';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         </div>
         <div className={style.content}>      
             <Route path="/cart" render={() => <CartContainer /> } />
+            <Route path="/news" render={() => <NewsContainer /> } />
             <Route exact path="/" render={() => <ProductPageContainer /> } />
         </div>
         <div className={style.footer}> 
