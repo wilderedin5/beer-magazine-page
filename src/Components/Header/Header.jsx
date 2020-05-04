@@ -17,8 +17,11 @@ const Header = (props) => {
             <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
                 Главная
             </NavLink>
-            <NavLink exact to="/news" className={style.link} activeClassName={style.activeLink}>
+            <NavLink to="/news" className={style.link} activeClassName={style.activeLink}>
                 Новости пивоварения
+            </NavLink>
+            <NavLink to="/chat" className={style.link} activeClassName={style.activeLink}>
+                Чат пивоварения
             </NavLink>
         </div>
     )
