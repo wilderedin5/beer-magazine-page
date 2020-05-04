@@ -11,7 +11,7 @@ const News = (props) => {
     return (
         <div>
             {
-                props.news.map(news => <OneNews {...news} deleteNews={props.deleteNews} />)
+                props.news.map(news => <OneNews {...news} deleteNews={props.deleteNews} totalStars={props.totalStars} changeNewsRating={props.changeNewsRating} />)
             }
             <NewsForm onSubmit={onSubmit} />
         </div>
