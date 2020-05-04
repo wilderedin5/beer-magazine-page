@@ -1,4 +1,5 @@
 const DELETE_NEWS = "news-reducer/DELETE_NEWS";
+const ADD_NEWS = "news-reducer/ADD_NEWS";
 
 let initialState = {
     news: [
@@ -17,6 +18,11 @@ const newsReducer = (state = initialState, action) => {
                 ...state,
                 news: state.news.filter(news => news.id !== action.newsId)
             }
+        case ADD_NEWS:
+            return {
+                ...state,
+                news: [...state.news, action.newsItem]
+            }
         default:
             return state
     }
@@ -25,6 +31,11 @@ const newsReducer = (state = initialState, action) => {
 export const deleteNews = (newsId) => ({
     type: DELETE_NEWS,
     newsId
+})
+
+export const addNews = (id,newsText,theme,authorName,category) => ({
+    type: ADD_NEWS,
+    newsItem: {id,newsText,theme,authorName,category}
 })
 
 export default newsReducer;
