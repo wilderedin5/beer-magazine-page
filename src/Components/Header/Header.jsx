@@ -23,6 +23,9 @@ const Header = (props) => {
             <NavLink to="/chat" className={style.link} activeClassName={style.activeLink}>
                 Чат пивоварения
             </NavLink>
+            <NavLink to="/share" className={style.link} activeClassName={style.activeLink}>
+                Акции
+            </NavLink>
         </div>
     )
 }

@@ -8,6 +8,7 @@ import CartContainer from './Components/Cart/CartContainer';
 import cn from 'classnames';
 import NewsContainer from './Components/News/NewsContainer';
 import ChatContainer from './Components/Chat/ChatContainer';
+import SharesContainer from './Components/Shares/SharesContainer';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/cart" render={() => <CartContainer /> } />
             <Route path="/news" render={() => <NewsContainer /> } />
             <Route path="/chat" render={() => <ChatContainer /> } />
+            <Route path="/share" render={() => <SharesContainer /> } />
             <Route exact path="/" render={() => <ProductPageContainer /> } />
         </div>
         <div className={style.footer}> 
