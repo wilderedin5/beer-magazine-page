@@ -9,6 +9,7 @@ import cn from 'classnames';
 import NewsContainer from './Components/News/NewsContainer';
 import ChatContainer from './Components/Chat/ChatContainer';
 import SharesContainer from './Components/Shares/SharesContainer';
+import ContactsContainer from './Components/Contacts/ContactsContainer';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/news/:id?" render={() => <NewsContainer /> } />
             <Route path="/chat" render={() => <ChatContainer /> } />
             <Route path="/share/:id?" render={() => <SharesContainer /> } />
+            <Route path="/contacts" render={() => <ContactsContainer /> } />
             <Route exact path="/" render={() => <ProductPageContainer /> } />
         </div>
         <div className={style.footer}> 

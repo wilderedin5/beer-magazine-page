@@ -26,6 +26,9 @@ const Header = (props) => {
             <NavLink to="/share" className={style.link} activeClassName={style.activeLink}>
                 Акции
             </NavLink>
+            <NavLink to="/contacts" className={style.link} activeClassName={style.activeLink}>
+                Контакты
+            </NavLink>
         </div>
     )
 }
