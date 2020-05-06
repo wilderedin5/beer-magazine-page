@@ -3,6 +3,9 @@
     flex-basis: 45%;
     margin-bottom: 10px;
     padding: 10px;
+    &.shareOpened{
+        flex-basis: 100%;
+    }
     .shareImage{
         width: 100%;
         & img {
