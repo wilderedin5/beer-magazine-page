@@ -1,5 +1,7 @@
 import { connect } from "react-redux"
 import Shares from "./Shares";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state) => {
     return {
@@ -7,4 +9,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{})(Shares);
+export default compose(
+    withRouter,
+    connect(mapStateToProps,{})
+)(Shares);

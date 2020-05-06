@@ -2,8 +2,9 @@
     color: grey;
 }
 .starSelected{
-    color: yellow;
+    color: orange;
 }
 .starSelected,.star{
     margin-right: 7px;
+    cursor: pointer;
 }
