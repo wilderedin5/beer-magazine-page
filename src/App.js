@@ -18,7 +18,7 @@ const App = () => {
         </div>
         <div className={style.content}>      
             <Route path="/cart" render={() => <CartContainer /> } />
-            <Route path="/news" render={() => <NewsContainer /> } />
+            <Route path="/news/:id?" render={() => <NewsContainer /> } />
             <Route path="/chat" render={() => <ChatContainer /> } />
             <Route path="/share/:id?" render={() => <SharesContainer /> } />
             <Route exact path="/" render={() => <ProductPageContainer /> } />

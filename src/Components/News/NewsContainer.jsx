@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import News from './News';
 import { deleteNews,addNews,changeNewsRating } from '../../redux/news-reducer';
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
@@ -9,4 +11,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{deleteNews,addNews,changeNewsRating})(News);
+export default compose(
+    withRouter,
+    connect(mapStateToProps,{deleteNews,addNews,changeNewsRating})
+)(News);

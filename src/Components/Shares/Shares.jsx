@@ -3,13 +3,13 @@ import Share from './Share/Share';
 import style from './Shares.module.scss';
 
 const Shares = (props) => {
-    const shareId = Number(props.match.params.id);
+    const shareId = props.match.params.id;
     return (
         <div className={style.shares}>
             { !shareId ?
                 props.shares.map(share => <Share {...share} />)
                 :
-                props.shares.filter(share => share.id === shareId).map(share => <Share {...share} shareOpened={shareId} />)
+                props.shares.filter(share => String(share.id) === shareId).map(share => <Share {...share} shareOpened={shareId} />)
             }
         </div>
     )
