@@ -10,7 +10,7 @@ const Share = (props) => {
                 <img src={props.imageShare} alt="" />
             </div>
             <div><b>Акция: </b>{props.shareName}</div>
-            <div><b>Описание: </b>{props.descShare}</div>
+            <div><b>Описание: </b>{props.shareOpened ? props.descShareFull : props.descShare}</div>
             <div><b>Дата проведения: </b>{props.timeShare}</div>
             { !props.shareOpened ?
                 <NavLink to={`/share/${props.id}`}>
