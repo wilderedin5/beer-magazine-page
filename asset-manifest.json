@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/beer-magazine-page/static/css/main.f7bc87b1.chunk.css",
-    "main.js": "/beer-magazine-page/static/js/main.574865b9.chunk.js",
-    "main.js.map": "/beer-magazine-page/static/js/main.574865b9.chunk.js.map",
+    "main.js": "/beer-magazine-page/static/js/main.d73de0ad.chunk.js",
+    "main.js.map": "/beer-magazine-page/static/js/main.d73de0ad.chunk.js.map",
     "runtime-main.js": "/beer-magazine-page/static/js/runtime-main.b71878e6.js",
     "runtime-main.js.map": "/beer-magazine-page/static/js/runtime-main.b71878e6.js.map",
     "static/css/2.35fcc229.chunk.css": "/beer-magazine-page/static/css/2.35fcc229.chunk.css",
-    "static/js/2.99685bce.chunk.js": "/beer-magazine-page/static/js/2.99685bce.chunk.js",
-    "static/js/2.99685bce.chunk.js.map": "/beer-magazine-page/static/js/2.99685bce.chunk.js.map",
+    "static/js/2.8d1d1edf.chunk.js": "/beer-magazine-page/static/js/2.8d1d1edf.chunk.js",
+    "static/js/2.8d1d1edf.chunk.js.map": "/beer-magazine-page/static/js/2.8d1d1edf.chunk.js.map",
     "index.html": "/beer-magazine-page/index.html",
-    "precache-manifest.ff6e7ed0acb47fe630ab699f65147c8e.js": "/beer-magazine-page/precache-manifest.ff6e7ed0acb47fe630ab699f65147c8e.js",
+    "precache-manifest.9acb00baaa5e08601bb411a36ce727d5.js": "/beer-magazine-page/precache-manifest.9acb00baaa5e08601bb411a36ce727d5.js",
     "service-worker.js": "/beer-magazine-page/service-worker.js",
     "static/css/2.35fcc229.chunk.css.map": "/beer-magazine-page/static/css/2.35fcc229.chunk.css.map",
     "static/css/main.f7bc87b1.chunk.css.map": "/beer-magazine-page/static/css/main.f7bc87b1.chunk.css.map",
-    "static/js/2.99685bce.chunk.js.LICENSE.txt": "/beer-magazine-page/static/js/2.99685bce.chunk.js.LICENSE.txt"
+    "static/js/2.8d1d1edf.chunk.js.LICENSE.txt": "/beer-magazine-page/static/js/2.8d1d1edf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b71878e6.js",
     "static/css/2.35fcc229.chunk.css",
-    "static/js/2.99685bce.chunk.js",
+    "static/js/2.8d1d1edf.chunk.js",
     "static/css/main.f7bc87b1.chunk.css",
-    "static/js/main.574865b9.chunk.js"
+    "static/js/main.d73de0ad.chunk.js"
   ]
 }
