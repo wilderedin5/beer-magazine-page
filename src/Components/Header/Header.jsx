@@ -2,17 +2,18 @@ import React from 'react';
 import style from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
+import { ShoppingCartOutlined } from '@ant-design/icons';
+import { Button, Badge } from 'antd';
 
 const Header = (props) => {
     return (
         <div className={style.header}>
             <NavLink to="/cart" className={cn(style.link, style.cartLink)} activeClassName={style.activeLink}>
-                <div className={style.cart}>
-                    Корзина
-                    {props.cart &&
-                        <div className={style.cartCount}>{props.cart.length}</div>
-                    }
-                </div>
+                <Badge count={props.cart.length} showZero>
+                    <Button type="primary" className={style.cart}>
+                        <ShoppingCartOutlined className={style.cartIcon} />
+                    </Button>
+                </Badge>
             </NavLink>
             <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
                 Главная

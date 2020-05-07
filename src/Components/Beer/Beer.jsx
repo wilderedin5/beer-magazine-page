@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Beer.module.scss';
+import { Button } from 'antd';
 
 const Beer = ({image,name,description,date,abv,tips,contributed,addItemToCart,beerId,deleteItemFromCart}) => {
     return (
@@ -14,9 +15,9 @@ const Beer = ({image,name,description,date,abv,tips,contributed,addItemToCart,be
             <div><b>Советы от пивоваров:</b> {tips}</div>
             <div><b>Поставщик:</b> {contributed}</div>
             { addItemToCart ?
-                <button className={style.beerBtn} onClick={() => addItemToCart(beerId)}>Добавить в корзину</button>
+                <Button className={style.beerBtn} type="primary" onClick={() => addItemToCart(beerId)}>Добавить в корзину</Button>
             :
-                <button className={style.beerBtn} onClick={() => deleteItemFromCart(beerId)}>Удалить из корзины</button>
+                <Button className={style.beerBtn} type="primary" onClick={() => deleteItemFromCart(beerId)}>Удалить из корзины</Button>
             }
         </div>
     )

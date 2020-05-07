@@ -10,6 +10,7 @@ import NewsContainer from './Components/News/NewsContainer';
 import ChatContainer from './Components/Chat/ChatContainer';
 import SharesContainer from './Components/Shares/SharesContainer';
 import ContactsContainer from './Components/Contacts/ContactsContainer';
+import "antd/dist/antd.css";
 
 const App = () => {
   return (

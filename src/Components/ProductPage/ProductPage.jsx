@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './ProductPage.module.scss';
 import Beer from '../Beer/Beer';
-import Paginator from '../Common/Paginator/Paginator';
 import FilterForm from './FilterForm/FilterForm';
+import { Pagination } from 'antd';
 
 const ProductPage = (props) => {
     const onSubmit = (formData) => {
@@ -12,7 +12,7 @@ const ProductPage = (props) => {
     return (
         <div>
             <div className={style.panel}>
-                <Paginator currentPage={props.currentPage} onPageChanged={props.onPageChanged} totalItemsCount={props.totalItemsCount} pageSize={props.pageSize} />
+                <Pagination defaultCurrent={1} onChange={props.onPageChanged} total={props.totalItemsCount} showSizeChanger={false} />
                 <FilterForm onSubmit={onSubmit} />
             </div>
             

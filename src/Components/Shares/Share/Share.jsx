@@ -2,6 +2,7 @@ import React from 'react';
 import style from './Share.module.scss';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
+import { Button } from 'antd';
 
 const Share = (props) => {
     return (
@@ -14,11 +15,11 @@ const Share = (props) => {
             <div><b>Дата проведения: </b>{props.timeShare}</div>
             { !props.shareOpened ?
                 <NavLink to={`/share/${props.id}`}>
-                    <button>Перейти на страницу акции</button>
+                    <Button type="primary">Перейти на страницу акции</Button>
                 </NavLink>
                 :
                 <NavLink to="/share">
-                    <button>Вернуться на страницу акций</button>
+                    <Button type="primary">Вернуться на страницу акций</Button>
                 </NavLink>
             }
         </div>
