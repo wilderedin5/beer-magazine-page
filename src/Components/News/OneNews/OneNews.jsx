@@ -8,7 +8,7 @@ const OneNews = (props) => {
     return (
         <div className={style.newsItem}>
             <div><b>Тема:</b> {props.theme}</div>
-            <div>{props.newsText}</div>
+            <div>{props.newsOpened ? props.newsText : props.newsText.substring(0,300) + "...."}</div>
             <div><b>Автор:</b> {props.authorName}</div>
             <div><b>Категория:</b> {props.category}</div>
             <div className={style.btnLine}>
