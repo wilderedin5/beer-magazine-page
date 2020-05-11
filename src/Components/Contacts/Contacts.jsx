@@ -3,34 +3,53 @@ import Address from './Address/Address';
 import PhoneNumber from './PhoneNumber/PhoneNumber';
 import Mail from './Mail/Mail';
 import Requisite from './Requisite/Requisite';
+import { List, Divider } from 'antd';
+import style from './Contacts.module.scss';
 
 const Contacts = (props) => {
     return (
         <div>
-            <div>
-                <h1>Адрес:</h1>
-                {
-                    props.address.map(address => <Address {...address} />)
-                }
-            </div>
-            <div>
-                <h1>Телефон:</h1>
-                {
-                    props.phone.map(phone => <PhoneNumber {...phone} />)
-                }
-            </div>
-            <div>
-                <h1>E-mail:</h1>
-                {
-                    props.email.map(mail => <Mail {...mail} />)
-                }
-            </div>
-            <div>
-                <h1>Реквизиты:</h1>
-                {
-                    props.requisites.map(requisite => <Requisite {...requisite} />)
-                }
-            </div>
+            <Divider className={style.divider} orientation="left">Адрес:</Divider>
+            <List
+                size="small"
+                bordered
+                dataSource={props.address}
+                renderItem={item => (
+                    <List.Item>
+                        <Address {...item} />
+                    </List.Item>
+                )} />
+            <Divider className={style.divider} orientation="left">Телефон:</Divider>
+            <List
+                size="small"
+                bordered
+                dataSource={props.phone}
+                renderItem={item => (
+                    <List.Item>
+                        <PhoneNumber {...item} />
+                    </List.Item>
+                )} />
+            <Divider className={style.divider} orientation="left">E-mail:</Divider>
+            <List
+                size="small"
+                bordered
+                dataSource={props.email}
+                renderItem={item => (
+                    <List.Item>
+                        <Mail {...item} />
+                    </List.Item>
+                )} />
+            <Divider className={style.divider} orientation="left">Реквизиты:</Divider>
+            <List
+                size="small"
+                bordered
+                dataSource={props.requisites}
+                renderItem={item => (
+                    <List.Item>
+                        <Requisite {...item} />
+                    </List.Item>
+                )} />
+
         </div>
     )
 }

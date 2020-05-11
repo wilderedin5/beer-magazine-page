@@ -1,31 +1,7 @@
-.header{
+.header {
     position: relative;
-    .link{
-        color: #fff;
-        font-weight: 700;
-        text-decoration: none;
-        &:not(.cartLink){
-            margin-right: 20px;
-        }
-        &.activeLink{
-            color: rgb(3, 173, 3);
-            .cartCount{
-                color: #fff;
-            }
-        }
-        &.cartLink{
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 0;
-            &:hover{
-                background: rgba(0, 162, 255, 0.329);
-            }
-        }
-    }
-    .cart{
-        .cartIcon{
-            font-size: 24px;
-        }
+    .cartLink {
+        position: absolute;
+        right: 0;
     }
 }

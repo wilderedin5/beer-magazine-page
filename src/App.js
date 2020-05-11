@@ -10,27 +10,27 @@ import NewsContainer from './Components/News/NewsContainer';
 import ChatContainer from './Components/Chat/ChatContainer';
 import SharesContainer from './Components/Shares/SharesContainer';
 import ContactsContainer from './Components/Contacts/ContactsContainer';
-import "antd/dist/antd.css";
+import { Layout } from 'antd';
 
 const App = () => {
+  const { Header, Footer, Content } = Layout;
   return (
-    <div className={cn(style.app,style.container)}>
-        <div className={style.header}>
-          <HeaderContainer />
-        </div>
-        <div className={style.content}>      
-            <Route path="/cart" render={() => <CartContainer /> } />
-            <Route path="/news/:id?" render={() => <NewsContainer /> } />
-            <Route path="/chat" render={() => <ChatContainer /> } />
-            <Route path="/share/:id?" render={() => <SharesContainer /> } />
-            <Route path="/contacts" render={() => <ContactsContainer /> } />
-            <Route exact path="/" render={() => <ProductPageContainer /> } />
-        </div>
-        <div className={style.footer}> 
-          <Footer />
-        </div>
-    </div>
-
+    <Layout>
+      <Header>
+        <HeaderContainer />
+      </Header>
+      <Content className={style.content}>
+        <Route path="/cart" render={() => <CartContainer />} />
+        <Route path="/news/:id?" render={() => <NewsContainer />} />
+        <Route path="/chat" render={() => <ChatContainer />} />
+        <Route path="/share/:id?" render={() => <SharesContainer />} />
+        <Route path="/contacts" render={() => <ContactsContainer />} />
+        <Route exact path="/" render={() => <ProductPageContainer />} />
+      </Content>
+      <Footer>
+        <Footer />
+      </Footer>
+    </Layout>
   );
 }
 

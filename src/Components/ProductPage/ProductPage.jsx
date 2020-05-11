@@ -10,7 +10,7 @@ const ProductPage = (props) => {
     }
 
     return (
-        <div>
+        <div className={style.products}>
             <div className={style.panel}>
                 <Pagination defaultCurrent={1} onChange={props.onPageChanged} total={props.totalItemsCount} showSizeChanger={false} />
                 <FilterForm onSubmit={onSubmit} />

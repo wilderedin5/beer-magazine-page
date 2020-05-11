@@ -1,35 +1,49 @@
 import React from 'react';
 import style from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
-import cn from 'classnames';
 import { ShoppingCartOutlined } from '@ant-design/icons';
-import { Button, Badge } from 'antd';
+import { Button, Badge, Menu } from 'antd';
 
 const Header = (props) => {
     return (
         <div className={style.header}>
-            <NavLink to="/cart" className={cn(style.link, style.cartLink)} activeClassName={style.activeLink}>
-                <Badge count={props.cart.length} showZero>
-                    <Button type="primary" className={style.cart}>
-                        <ShoppingCartOutlined className={style.cartIcon} />
-                    </Button>
-                </Badge>
-            </NavLink>
-            <NavLink exact to="/" className={style.link} activeClassName={style.activeLink}>
-                Главная
-            </NavLink>
-            <NavLink to="/news" className={style.link} activeClassName={style.activeLink}>
-                Новости пивоварения
-            </NavLink>
-            <NavLink to="/chat" className={style.link} activeClassName={style.activeLink}>
-                Чат пивоварения
-            </NavLink>
-            <NavLink to="/share" className={style.link} activeClassName={style.activeLink}>
-                Акции
-            </NavLink>
-            <NavLink to="/contacts" className={style.link} activeClassName={style.activeLink}>
-                Контакты
-            </NavLink>
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+                <Menu.Item className={style.cartLink}>
+                    <NavLink to="/cart" activeClassName={style.activeLink}>
+                        <Badge count={props.cart.length} showZero>
+                            <Button type="primary" className={style.cart}>
+                                <ShoppingCartOutlined className={style.cartIcon} />
+                            </Button>
+                        </Badge>
+                    </NavLink>
+                </Menu.Item>
+
+                <Menu.Item key="1">
+                    <NavLink exact to="/" activeClassName={style.activeLink}>
+                        Главная
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="2">
+                    <NavLink to="/news" activeClassName={style.activeLink}>
+                        Новости пивоварения
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="3">
+                    <NavLink to="/chat" activeClassName={style.activeLink}>
+                        Чат пивоварения
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="4">
+                    <NavLink to="/share" activeClassName={style.activeLink}>
+                        Акции
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="5">
+                    <NavLink to="/contacts" activeClassName={style.activeLink}>
+                        Контакты
+                    </NavLink>
+                </Menu.Item>
+            </Menu>
         </div>
     )
 }
