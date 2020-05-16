@@ -1,5 +1,6 @@
 const ADD_MESSAGE_TO_CHAT = "chat-reducer/ADD_MESSAGE_TO_CHAT";
 const TOGGLE_LIKE_MESSAGE = "chat-reducer/TOGGLE_LIKE_MESSAGE";
+const DELETE_MESSAGE_FROM_CHAT = "chat-reducer/DELETE_MESSAGE_FROM_CHAT";
 
 let initialState = {
     messages: [
@@ -31,6 +32,11 @@ const chatReducer = (state = initialState, action) => {
                     return message
                 })
             }
+        case DELETE_MESSAGE_FROM_CHAT:
+            return {
+                ...state,
+                messages: state.messages.filter(message => message.id !== action.messageId)
+            }
         default:
             return state
     }
@@ -45,6 +51,11 @@ export const toggleLikeMessage = (messageId,liked) => ({
     type: TOGGLE_LIKE_MESSAGE,
     messageId,
     liked
-})
+});
+
+export const deleteMessageFromMessage = (messageId) => ({
+    type: DELETE_MESSAGE_FROM_CHAT,
+    messageId
+});
 
 export default chatReducer;

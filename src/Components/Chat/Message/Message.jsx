@@ -26,7 +26,8 @@ const Message = (props) => {
                     )}
                 </Tooltip>
                 <span className="comment-action">{props.likeCount}</span>
-            </span>
+            </span>,
+            <span onClick={() => props.deleteMessageFromMessage(props.id)}>Удалить сообщение</span>
     ];
     return (
         <Comment className={style.message} actions={actions} author={<a>{props.authorName}</a>} content={<p>{props.messageText}</p>} />
