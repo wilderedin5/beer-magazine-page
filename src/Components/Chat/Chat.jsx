@@ -1,7 +1,9 @@
 import React from 'react';
 import Message from './Message/Message';
 import ChatForm from './ChatForm/ChatForm';
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
+import { Button } from 'antd';
+import style from './Chat.module.scss';
 
 const Chat = (props) => {
     const onSubmit = (formData) => {
@@ -11,9 +13,12 @@ const Chat = (props) => {
     return (
         <div>
             {
-                props.messages.map(message => <Message {...message} toggleLikeMessage={props.toggleLikeMessage} deleteMessageFromMessage={props.deleteMessageFromMessage} />)
+                props.messages.map(message => <Message {...message} toggleLikeMessage={props.toggleLikeMessage} deleteMessageFromChat={props.deleteMessageFromChat} />)
             }
-            <ChatForm onSubmit={onSubmit} />
+            <div className={style.chatPanel}>
+                <ChatForm onSubmit={onSubmit} />
+                <Button onClick={() => props.deleteAllMessagesFromChat()} type="primary">Очистить чат</Button>
+            </div>
         </div>
     )
 }
