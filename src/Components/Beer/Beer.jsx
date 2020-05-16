@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Beer.module.scss';
 import { Button } from 'antd';
 
-const Beer = ({image,name,description,date,abv,tips,contributed,addItemToCart,beerId,deleteItemFromCart}) => {
+const Beer = ({image,name,description,date,abv,tips,contributed,addItemToCart,beerId,deleteItemFromCart,beersInCart}) => {
     return (
         <div className={style.beer}>
             <div className={style.beerImage}>
@@ -15,7 +15,7 @@ const Beer = ({image,name,description,date,abv,tips,contributed,addItemToCart,be
             <div><b>Советы от пивоваров:</b> {tips}</div>
             <div><b>Поставщик:</b> {contributed}</div>
             { addItemToCart ?
-                <Button className={style.beerBtn} type="primary" onClick={() => addItemToCart(beerId)}>Добавить в корзину</Button>
+                <Button disabled={beersInCart.some(beer => beer.id === beerId)} className={style.beerBtn} type="primary" onClick={() => addItemToCart(beerId)}>Добавить в корзину</Button>
             :
                 <Button className={style.beerBtn} type="primary" onClick={() => deleteItemFromCart(beerId)}>Удалить из корзины</Button>
             }

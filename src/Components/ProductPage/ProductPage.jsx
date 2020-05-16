@@ -19,7 +19,7 @@ const ProductPage = (props) => {
             <div className={style.ProductPage}>
                 {
                     props.beers.map(beer => <Beer image={beer.image_url} name={beer.name} description={beer.description} tips={beer.brewers_tips} beerId={beer.id}
-                        contributed={beer.contributed_by} date={beer.first_brewed} abv={beer.abv} addItemToCart={props.addItemToCart} />)
+                        contributed={beer.contributed_by} date={beer.first_brewed} abv={beer.abv} addItemToCart={props.addItemToCart} beersInCart={props.beersInCart} />)
                 }
             </div>
         </div>

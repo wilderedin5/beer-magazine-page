@@ -16,13 +16,14 @@ const ProductPageContainer = (props) => {
     }
 
     return ( <ProductPage addItemToCart={props.addItemToCart} beers={props.beers} onPageChanged={onPageChanged} setAbvFilter={props.setAbvFilter}
-            pageSize={props.pageSize} totalItemsCount={props.totalItemsCount} currentPage={props.currentPage} />
+            pageSize={props.pageSize} totalItemsCount={props.totalItemsCount} currentPage={props.currentPage} beersInCart={props.beersInCart} />
     )
 }
 
 const mapStateToProps = (state) => {
     return {
         beers: state.productPage.beers,
+        beersInCart: state.cart.cart,
         currentPage: state.productPage.currentPage,
         totalItemsCount: state.productPage.totalItemsCount,
         pageSize: state.productPage.pageSize,
