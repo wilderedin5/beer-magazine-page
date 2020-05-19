@@ -27,7 +27,7 @@ const CommentShare = (props) => {
                 </Tooltip>
                 <span className="comment-action">{props.likeCount}</span>
             </span>,
-            <span onClick={() => props.toggleLikeCommentOfShares(props.shareId,props.id)}>Удалить сообщение</span>
+            <span onClick={() => props.deleteCommentOfShares(+props.shareId,props.id)}>Удалить сообщение</span>
     ];
     return (
         <Comment className={style.message} actions={actions} author={<a>{props.name}</a>} content={<p>{props.text}</p>} />

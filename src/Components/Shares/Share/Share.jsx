@@ -25,7 +25,7 @@ const Share = (props) => {
             }
             <div className={style.comments}>
                 {props.shareOpened &&
-                    props.comment.map(comment => <CommentShare shareId={props.shareOpened} toggleLikeCommentOfShares={props.toggleLikeCommentOfShares} {...comment} />)
+                    props.comment.map(comment => <CommentShare deleteCommentOfShares={props.deleteCommentOfShares} shareId={props.shareOpened} toggleLikeCommentOfShares={props.toggleLikeCommentOfShares} {...comment} />)
                 }
             </div>
         </div>
