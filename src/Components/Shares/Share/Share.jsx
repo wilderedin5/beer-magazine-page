@@ -4,8 +4,13 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { Button } from 'antd';
 import CommentShare from './CommentShare/CommentShare';
+import ShareForm from './ShareForm/ShareForm';
+import { v4 } from 'uuid';
 
 const Share = (props) => {
+    const onSubmit = (formData) => {
+        props.addCommentToShares(v4(), formData.text, formData.name, false, 0, +props.shareOpened);
+    }
     return (
         <div className={cn(style.share, { [style.shareOpened]: props.shareOpened })}>
             <div className={style.shareImage}>
@@ -28,6 +33,9 @@ const Share = (props) => {
                     props.comment.map(comment => <CommentShare deleteCommentOfShares={props.deleteCommentOfShares} shareId={props.shareOpened} toggleLikeCommentOfShares={props.toggleLikeCommentOfShares} {...comment} />)
                 }
             </div>
+            {props.shareOpened &&
+                <ShareForm onSubmit={onSubmit} />
+            }
         </div>
     )
 }

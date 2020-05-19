@@ -9,7 +9,7 @@ const Shares = (props) => {
             { !shareId ?
                 props.shares.map(share => <Share {...share} />)
                 :
-                props.shares.filter(share => String(share.id) === shareId).map(share => <Share deleteCommentOfShares={props.deleteCommentOfShares} toggleLikeCommentOfShares={props.toggleLikeCommentOfShares} {...share} shareOpened={shareId} />)
+                props.shares.filter(share => String(share.id) === shareId).map(share => <Share addCommentToShares={props.addCommentToShares} deleteCommentOfShares={props.deleteCommentOfShares} toggleLikeCommentOfShares={props.toggleLikeCommentOfShares} {...share} shareOpened={shareId} />)
             }
         </div>
     )

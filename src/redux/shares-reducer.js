@@ -1,5 +1,6 @@
 const TOGGLE_LIKE_COMMENT_OF_SHARES = "shares-reducer/TOGGLE_LIKE_COMMENT_OF_SHARES";
 const DELETE_COMMENT_OF_SHARES = "shares-reducer/DELETE_COMMENT_OF_SHARES";
+const ADD_COMMENT_TO_SHARES = "shares-reducer/ADD_COMMENT_TO_SHARES";
 
 let initialState = {
     shares: [
@@ -53,6 +54,16 @@ export const sharesReducer = (state = initialState, action) => {
                     return share;
                 })
             }
+        case ADD_COMMENT_TO_SHARES:
+            return {
+                ...state,
+                shares: state.shares.map(share => {
+                    if(share.id === action.shareId){
+                        share.comment = [...share.comment, action.comment]
+                    }
+                    return share;
+                })
+            }
         default:
             return state
     }
@@ -68,6 +79,14 @@ export const deleteCommentOfShares = (shareId,commentId) => ({
     type: DELETE_COMMENT_OF_SHARES,
     shareId,
     commentId
-})
+});
+
+export const addCommentToShares = (id,text,name,liked,likeCount,shareId) => ({
+    type: ADD_COMMENT_TO_SHARES,
+    shareId,
+    comment: {id,text,name,liked,likeCount}
+});
+
+
 
 export default sharesReducer;
