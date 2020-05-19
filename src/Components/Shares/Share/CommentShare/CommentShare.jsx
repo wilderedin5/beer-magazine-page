@@ -10,7 +10,7 @@ const CommentShare = (props) => {
             <span key="comment-basic-like">
                 <Tooltip title="Like">
                     {React.createElement(props.liked === false ? LikeOutlined : LikeOutlined, {
-                        onClick: () => props.toggleLikeMessage(props.id, true)
+                        onClick: () => props.toggleLikeCommentOfShares(+props.shareId,props.id)
                     })}
                 </Tooltip>
                 <span className="comment-action">{props.likeCount}</span>
@@ -21,13 +21,13 @@ const CommentShare = (props) => {
                     {React.createElement(
                         props.liked === true ? DislikeFilled : DislikeOutlined,
                         {
-                            onClick: () => props.toggleLikeMessage(props.id, false)
+                            onClick: () => props.toggleLikeCommentOfShares(+props.shareId,props.id)
                         }
                     )}
                 </Tooltip>
                 <span className="comment-action">{props.likeCount}</span>
             </span>,
-            <span onClick={() => props.deleteMessageFromChat(props.id)}>Удалить сообщение</span>
+            <span onClick={() => props.toggleLikeCommentOfShares(props.shareId,props.id)}>Удалить сообщение</span>
     ];
     return (
         <Comment className={style.message} actions={actions} author={<a>{props.name}</a>} content={<p>{props.text}</p>} />
