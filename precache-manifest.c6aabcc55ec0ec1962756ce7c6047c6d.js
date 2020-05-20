@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "83fe907bbcbec617359d2a06709a0e92",
+    "revision": "6b72330235c7ed88dd0f62fab13a724a",
     "url": "/beer-magazine-page/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/beer-magazine-page/static/css/2.35fcc229.chunk.css"
   },
   {
-    "revision": "9fc4e1ad1ec4de7676fa",
+    "revision": "1e5100562265f6558668",
     "url": "/beer-magazine-page/static/css/main.efeebe92.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/beer-magazine-page/static/js/2.8ec5af24.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9fc4e1ad1ec4de7676fa",
-    "url": "/beer-magazine-page/static/js/main.5f732841.chunk.js"
+    "revision": "1e5100562265f6558668",
+    "url": "/beer-magazine-page/static/js/main.106985c0.chunk.js"
   },
   {
     "revision": "65df17243dcccd88037f",
