@@ -8,17 +8,15 @@ import { Button } from 'antd';
 const Input = createFormElement("input");
 const Textarea = createFormElement("textarea");
 
-const ChatForm = (props) => {
-    return (
-        <form className={style.chatForm} onSubmit={props.handleSubmit}>
-            <Field component={Textarea} type="text" placeholder="Текст..." name="messageText" validate={[required, maxAbv260]} />
-            <Field component={Input} type="text" placeholder="Имя" name="authorName" validate={[required, maxAbv60]} />
-            <Button htmlType="submit" type="primary">
-                Add Comment
+const ChatForm = (props) => (
+    <form className={style.chatForm} onSubmit={props.handleSubmit}>
+        <Field component={Textarea} type="text" placeholder="Текст..." name="messageText" validate={[required, maxAbv260]} />
+        <Field component={Input} type="text" placeholder="Имя" name="authorName" validate={[required, maxAbv60]} />
+        <Button htmlType="submit" type="primary">
+            Add Comment
             </Button>
-        </form>
-    )
-}
+    </form>
+)
 
 export default reduxForm({
     form: 'ChatForm' // a unique identifier for this form

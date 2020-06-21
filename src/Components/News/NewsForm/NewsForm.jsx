@@ -9,17 +9,15 @@ const Input = createFormElement("input");
 const Textarea = createFormElement("textarea");
 
 
-const NewsForm = (props) => {
-    return (
-        <form className={style.newsForm} onSubmit={props.handleSubmit}>
-            <Field component={Input} validate={[required,maxAbv60]} type="text" placeholder="Name" name="authorName" />
-            <Field component={Input} validate={[required,maxAbv60]} type="text" placeholder="Theme" name="theme" />
-            <Field component={Input} validate={[required,maxAbv60]} type="text" placeholder="Category" name="category" />
-            <Field component={Textarea} validate={[required,maxAbv1500]} type="text" placeholder="Text" name="newsText" />
-            <Button type="primary">Отправить новость</Button>
-        </form>
-    )
-}
+const NewsForm = (props) => (
+    <form className={style.newsForm} onSubmit={props.handleSubmit}>
+        <Field component={Input} validate={[required, maxAbv60]} type="text" placeholder="Name" name="authorName" />
+        <Field component={Input} validate={[required, maxAbv60]} type="text" placeholder="Theme" name="theme" />
+        <Field component={Input} validate={[required, maxAbv60]} type="text" placeholder="Category" name="category" />
+        <Field component={Textarea} validate={[required, maxAbv1500]} type="text" placeholder="Text" name="newsText" />
+        <Button type="primary">Отправить новость</Button>
+    </form>
+)
 
 export default reduxForm({
     form: 'NewsForm' // a unique identifier for this form

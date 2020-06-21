@@ -1,10 +1,8 @@
 import Header from "./Header";
 import { connect } from "react-redux";
 
-const mapStateToProps = (state) => {
-    return {
-        cart: state.cart.cart
-    }
-}
+const mapStateToProps = (state) => ({
+    cart: state.cart.cart
+})
 
-export default connect(mapStateToProps,{})(Header);
+export default connect(mapStateToProps, {})(Header);
