@@ -1,27 +1,39 @@
-import React from 'react';
-import OneNews from './OneNews/OneNews';
-import NewsForm from './NewsForm/NewsForm';
-import { v4 } from 'uuid';
+import React from "react";
+import { v4 } from "uuid";
+import OneNews from "./OneNews/OneNews";
+import NewsForm from "./NewsForm/NewsForm";
 
-const News = (props) => {
-    const newsId = props.match.params.id;
-    const onSubmit = (formData) => {
-        props.addNews(v4(), formData.newsText, formData.theme, formData.authorName, formData.category)
-    }
+const News = ({
+  match,
+  deleteNews,
+  totalStars,
+  changeRating,
+  news,
+  addNews,
+}) => {
+  const newsId = match.params.id;
+  const handleSubmit = ({ newsText, theme, authorName, category }) => {
+    addNews(v4(), newsText, theme, authorName, category);
+  };
 
-    return (
-        <div>
-            {!newsId ?
-                props.news.map(news => <OneNews {...news} deleteNews={props.deleteNews} totalStars={props.totalStars} changeNewsRating={props.changeNewsRating} />)
-                :
-                props.news.filter(news => newsId === String(news.id)).map(news => <OneNews {...news} newsOpened={newsId}
-                    deleteNews={props.deleteNews} totalStars={props.totalStars} changeNewsRating={props.changeNewsRating} />)
-            }
-            {!newsId &&
-                <NewsForm onSubmit={onSubmit} />
-            }
-        </div>
-    )
-}
+  const formattedNews = news.filter((news) =>
+    newsId ? newsId === String(news.id) : true
+  );
+
+  return (
+    <div>
+      {formattedNews.map((news) => (
+        <OneNews
+          {...news}
+          newsOpened={newsId}
+          deleteNews={deleteNews}
+          totalStars={totalStars}
+          changeRating={changeRating}
+        />
+      ))}
+      {!newsId && <NewsForm onSubmit={handleSubmit} />}
+    </div>
+  );
+};
 
 export default News;

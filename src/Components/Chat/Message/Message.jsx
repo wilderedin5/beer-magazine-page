@@ -1,39 +1,35 @@
-import React from 'react';
-import style from './Message.module.scss';
-import { Comment, Tooltip } from 'antd';
-import {DislikeOutlined,LikeOutlined,DislikeFilled} from "@ant-design/icons";
+import React from "react";
+import { Comment as BaseComment, Tooltip } from "antd";
+import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
+import styled from "@emotion/styled";
 
+const Comment = styled(BaseComment)`
+  border: 1px solid #000;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+`;
 
 const Message = (props) => {
-    const actions = [
-        !props.liked ?
-            <span key="comment-basic-like">
-                <Tooltip title="Like">
-                    {React.createElement(props.liked === false ? LikeOutlined : LikeOutlined, {
-                        onClick: () => props.toggleLikeMessage(props.id, true)
-                    })}
-                </Tooltip>
-                <span className="comment-action">{props.likeCount}</span>
-            </span>
-            :
-            <span key=' key="comment-basic-dislike"'>
-                <Tooltip title="Dislike">
-                    {React.createElement(
-                        props.liked === true ? DislikeFilled : DislikeOutlined,
-                        {
-                            onClick: () => props.toggleLikeMessage(props.id, false)
-                        }
-                    )}
-                </Tooltip>
-                <span className="comment-action">{props.likeCount}</span>
-            </span>,
-            <span onClick={() => props.deleteMessageFromChat(props.id)}>Удалить сообщение</span>
-    ];
-    return (
-        <Comment className={style.message} actions={actions} author={<a>{props.authorName}</a>} content={<p>{props.messageText}</p>} />
-    )
-}
+  const actions = [
+    <span key="comment-basic-like">
+      <Tooltip title="Like">
+        {React.createElement(props.liked ? DislikeFilled : LikeOutlined, {
+          onClick: () => props.toggleLike(props.id, !props.liked),
+        })}
+      </Tooltip>
+      <span className="comment-action">{props.likeCount}</span>
+    </span>,
+    <span onClick={() => props.deleteMessage(props.id)}>
+      Удалить сообщение
+    </span>,
+  ];
+  return (
+    <Comment
+      actions={actions}
+      author={<a>{props.authorName}</a>}
+      content={<p>{props.messageText}</p>}
+    />
+  );
+};
 
 export default Message;
-
-

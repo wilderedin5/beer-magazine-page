@@ -1,9 +1,19 @@
-import { connect } from 'react-redux';
-import Chat from './Chat';
-import { addMessageToChat, toggleLikeMessage, deleteMessageFromChat, deleteAllMessagesFromChat } from '../../redux/chat-reducer';
+import { connect } from "react-redux";
+import {
+  addMessage,
+  toggleLike,
+  deleteMessage,
+  eraseChat,
+} from "../../redux/chat-reducer";
+import Chat from "./Chat";
 
 const mapStateToProps = (state) => ({
-    messages: state.chat.messages
-})
+  messages: state.chat.messages,
+});
 
-export default connect(mapStateToProps, { addMessageToChat, toggleLikeMessage, deleteMessageFromChat, deleteAllMessagesFromChat })(Chat);
+export default connect(mapStateToProps, {
+  addMessage,
+  toggleLike,
+  deleteMessage,
+  eraseChat,
+})(Chat);

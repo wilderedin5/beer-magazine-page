@@ -1,14 +1,23 @@
-import React from 'react';
-import style from './createFormElement.module.scss';
+import React from "react";
+import styled from "@emotion/styled";
+import {
+  Textarea as BaseTextarea,
+  Input as BaseInput,
+} from "../../Components/Common/type";
 
-const createFormElement = (Element) => ({ input, meta, ...props }) => {
-    const hasError = meta.error && meta.touched;
-    return (
-        <div>
-            <Element {...input} {...props} className={hasError ? style.formError : ""} />
-            {(hasError) ? <div className={style.textError}>{meta.error}</div> : null}
-        </div>
-    )
-}
+const Error = styled.div`
+  color: red;
+  font-size: 12px;
+`;
+
+const createFormElement = (Element) => ({ input, meta, ...props }) => (
+  <div>
+    <Element {...input} {...props} />
+    {meta.error && meta.touched && <Error>{meta.error}</Error>}
+  </div>
+);
+
+export const Textarea = createFormElement(BaseTextarea);
+export const Input = createFormElement(BaseInput);
 
 export default createFormElement;

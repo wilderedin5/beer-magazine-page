@@ -1,39 +1,35 @@
-import React from 'react';
-import style from './CommentShare.module.scss';
-import { Comment, Tooltip } from 'antd';
-import {DislikeOutlined,LikeOutlined,DislikeFilled} from "@ant-design/icons";
+import React from "react";
+import styled from "@emotion/styled";
+import { Comment as BaseComment, Tooltip } from "antd";
+import { LikeOutlined, DislikeFilled } from "@ant-design/icons";
 
+const Comment = styled(BaseComment)`
+  border: 1px solid #000;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+`;
 
 const CommentShare = (props) => {
-    const actions = [
-        !props.liked ?
-            <span key="comment-basic-like">
-                <Tooltip title="Like">
-                    {React.createElement(props.liked === false ? LikeOutlined : LikeOutlined, {
-                        onClick: () => props.toggleLikeCommentOfShares(+props.shareId,props.id)
-                    })}
-                </Tooltip>
-                <span className="comment-action">{props.likeCount}</span>
-            </span>
-            :
-            <span key=' key="comment-basic-dislike"'>
-                <Tooltip title="Dislike">
-                    {React.createElement(
-                        props.liked === true ? DislikeFilled : DislikeOutlined,
-                        {
-                            onClick: () => props.toggleLikeCommentOfShares(+props.shareId,props.id)
-                        }
-                    )}
-                </Tooltip>
-                <span className="comment-action">{props.likeCount}</span>
-            </span>,
-            <span onClick={() => props.deleteCommentOfShares(+props.shareId,props.id)}>Удалить сообщение</span>
-    ];
-    return (
-        <Comment className={style.message} actions={actions} author={<a>{props.name}</a>} content={<p>{props.text}</p>} />
-    )
-}
+  const actions = [
+    <span key="comment-basic-like">
+      <Tooltip title="Like">
+        {React.createElement(props.liked ? DislikeFilled : LikeOutlined, {
+          onClick: () => props.toggleLike(+props.shareId, props.id),
+        })}
+      </Tooltip>
+      <span className="comment-action">{props.likeCount}</span>
+    </span>,
+    <span onClick={() => props.deleteComment(+props.shareId, props.id)}>
+      Удалить сообщение
+    </span>,
+  ];
+  return (
+    <Comment
+      actions={actions}
+      author={<a>{props.name}</a>}
+      content={<p>{props.text}</p>}
+    />
+  );
+};
 
 export default CommentShare;
-
-

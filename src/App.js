@@ -1,19 +1,17 @@
-import React from 'react';
-import style from './App.module.scss';
-import HeaderContainer from './Components/Header/HeaderContainer';
-import Footer from './Components/Footer/Footer';
-import ProductPageContainer from './Components/ProductPage/ProductPageContainer';
-import { Route } from 'react-router-dom';
-import CartContainer from './Components/Cart/CartContainer';
-import cn from 'classnames';
-import NewsContainer from './Components/News/NewsContainer';
-import ChatContainer from './Components/Chat/ChatContainer';
-import SharesContainer from './Components/Shares/SharesContainer';
-import ContactsContainer from './Components/Contacts/ContactsContainer';
-import { Layout } from 'antd';
+import React from "react";
+import style from "./App.module.scss";
+import HeaderContainer from "./Components/Header/HeaderContainer";
+import ProductPageContainer from "./Components/ProductPage/ProductPageContainer";
+import { Route } from "react-router-dom";
+import CartContainer from "./Components/Cart/CartContainer";
+import NewsContainer from "./Components/News/NewsContainer";
+import ChatContainer from "./Components/Chat/ChatContainer";
+import SharesContainer from "./Components/Shares/SharesContainer";
+import ContactsContainer from "./Components/Contacts/ContactsContainer";
+import { Layout } from "antd";
 
 const App = () => {
-  const { Header, Footer, Content } = Layout;
+  const { Header, Content } = Layout;
   return (
     <Layout>
       <Header>
@@ -27,11 +25,8 @@ const App = () => {
         <Route path="/contacts" render={() => <ContactsContainer />} />
         <Route exact path="/" render={() => <ProductPageContainer />} />
       </Content>
-      <Footer>
-        <Footer />
-      </Footer>
     </Layout>
   );
-}
+};
 
 export default App;

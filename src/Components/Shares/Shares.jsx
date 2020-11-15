@@ -1,18 +1,32 @@
-import React from 'react';
-import Share from './Share/Share';
-import style from './Shares.module.scss';
+import React from "react";
+import styled from "@emotion/styled";
+import Share from "./Share/Share";
 
-const Shares = (props) => {
-    const shareId = props.match.params.id;
-    return (
-        <div className={style.shares}>
-            { !shareId ?
-                props.shares.map(share => <Share {...share} />)
-                :
-                props.shares.filter(share => String(share.id) === shareId).map(share => <Share addCommentToShares={props.addCommentToShares} deleteCommentOfShares={props.deleteCommentOfShares} toggleLikeCommentOfShares={props.toggleLikeCommentOfShares} {...share} shareOpened={shareId} />)
-            }
-        </div>
-    )
-}
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const Shares = ({ match, shares, addComment, deleteComment, toggleLike }) => {
+  const shareId = match.params.id;
+  return (
+    <Container>
+      {!shareId
+        ? shares.map((share) => <Share {...share} />)
+        : shares
+            .filter((share) => String(share.id) === shareId)
+            .map((share) => (
+              <Share
+                addComment={addComment}
+                deleteComment={deleteComment}
+                toggleLike={toggleLike}
+                shareOpened={shareId}
+                {...share}
+              />
+            ))}
+    </Container>
+  );
+};
 
 export default Shares;

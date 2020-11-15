@@ -1,23 +1,45 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import createFormElement from '../../../hoc/createFromElement/createFormElement';
-import { required, maxAbv260, maxAbv60 } from '../../../Validators/ChatFormValidate';
-import style from './ChatForm.module.scss';
-import { Button } from 'antd';
+import React from "react";
+import { Button } from "antd";
+import { Field, reduxForm } from "redux-form";
+import styled from "@emotion/styled";
+import {
+  Textarea,
+  Input,
+} from "../../../hoc/createFromElement/createFormElement";
+import {
+  required,
+  maxAbv260,
+  maxAbv60,
+} from "../../../Validators/ChatFormValidate";
 
-const Input = createFormElement("input");
-const Textarea = createFormElement("textarea");
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
 
 const ChatForm = (props) => (
-    <form className={style.chatForm} onSubmit={props.handleSubmit}>
-        <Field component={Textarea} type="text" placeholder="Текст..." name="messageText" validate={[required, maxAbv260]} />
-        <Field component={Input} type="text" placeholder="Имя" name="authorName" validate={[required, maxAbv60]} />
-        <Button htmlType="submit" type="primary">
-            Add Comment
-            </Button>
-    </form>
-)
+  <Form onSubmit={props.handleSubmit}>
+    <Field
+      component={Textarea}
+      type="text"
+      placeholder="Текст..."
+      name="messageText"
+      validate={[required, maxAbv260]}
+    />
+    <Field
+      component={Input}
+      type="text"
+      placeholder="Имя"
+      name="authorName"
+      validate={[required, maxAbv60]}
+    />
+    <Button htmlType="submit" type="primary">
+      Add Comment
+    </Button>
+  </Form>
+);
 
 export default reduxForm({
-    form: 'ChatForm' // a unique identifier for this form
-})(ChatForm)
+  form: "ChatForm",
+})(ChatForm);

@@ -1,14 +1,22 @@
-import { connect } from "react-redux"
-import Shares from "./Shares";
+import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
-import { toggleLikeCommentOfShares, deleteCommentOfShares, addCommentToShares } from "../../redux/shares-reducer";
+import {
+  toggleLike,
+  deleteComment,
+  addComment,
+} from "../../redux/shares-reducer";
+import Shares from "./Shares";
 
 const mapStateToProps = (state) => ({
-    shares: state.shares.shares
-})
+  shares: state.shares.shares,
+});
 
 export default compose(
-    withRouter,
-    connect(mapStateToProps, { toggleLikeCommentOfShares, deleteCommentOfShares, addCommentToShares })
+  withRouter,
+  connect(mapStateToProps, {
+    toggleLike,
+    deleteComment,
+    addComment,
+  })
 )(Shares);

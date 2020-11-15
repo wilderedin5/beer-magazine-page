@@ -1,26 +1,43 @@
-import React from 'react';
-import Message from './Message/Message';
-import ChatForm from './ChatForm/ChatForm';
-import { v4 } from 'uuid';
-import { Button } from 'antd';
-import style from './Chat.module.scss';
+import React from "react";
+import { v4 } from "uuid";
+import { Button } from "antd";
+import styled from "@emotion/styled";
+import Message from "./Message/Message";
+import ChatForm from "./ChatForm/ChatForm";
 
-const Chat = (props) => {
-    const onSubmit = (formData) => {
-        props.addMessageToChat(v4(), formData.authorName, formData.messageText, null, 0);
-    }
+const ChatPanel = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
-    return (
-        <div>
-            {
-                props.messages.map(message => <Message {...message} toggleLikeMessage={props.toggleLikeMessage} deleteMessageFromChat={props.deleteMessageFromChat} />)
-            }
-            <div className={style.chatPanel}>
-                <ChatForm onSubmit={onSubmit} />
-                <Button onClick={() => props.deleteAllMessagesFromChat()} type="primary">Очистить чат</Button>
-            </div>
-        </div>
-    )
-}
+const Chat = ({
+  eraseChat,
+  addMessage,
+  toggleLike,
+  deleteMessage,
+  messages,
+}) => {
+  const onSubmit = ({ authorName, messageText }) => {
+    addMessage(v4(), authorName, messageText, null, 0);
+  };
+
+  return (
+    <div>
+      {messages.map((message) => (
+        <Message
+          {...message}
+          toggleLike={toggleLike}
+          deleteMessage={deleteMessage}
+        />
+      ))}
+      <ChatPanel>
+        <ChatForm onSubmit={onSubmit} />
+        <Button onClick={() => eraseChat()} type="primary">
+          Очистить чат
+        </Button>
+      </ChatPanel>
+    </div>
+  );
+};
 
 export default Chat;
