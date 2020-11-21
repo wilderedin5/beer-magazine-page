@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Star from "./Star/Star";
+import Star from "./Star";
 
 const Container = styled.div`
   display: flex;

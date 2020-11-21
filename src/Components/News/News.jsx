@@ -1,7 +1,7 @@
 import React from "react";
 import { v4 } from "uuid";
-import OneNews from "./OneNews/OneNews";
-import NewsForm from "./NewsForm/NewsForm";
+import OneNews from "./OneNews";
+import NewsForm from "./NewsForm";
 
 const News = ({
   match,
@@ -12,8 +12,8 @@ const News = ({
   addNews,
 }) => {
   const newsId = match.params.id;
-  const handleSubmit = ({ newsText, theme, authorName, category }) => {
-    addNews(v4(), newsText, theme, authorName, category);
+  const handleSubmit = ({ text, theme, author, category }) => {
+    addNews(v4(), text, theme, author, category);
   };
 
   const formattedNews = news.filter((news) =>

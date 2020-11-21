@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Share from "./Share/Share";
+import Share from "./Share";
 
 const Container = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Shares = ({ match, shares, addComment, deleteComment, toggleLike }) => {
+const Shares = ({ match, shares, addComment, deleteComment, setLike }) => {
   const shareId = match.params.id;
   return (
     <Container>
@@ -20,8 +20,8 @@ const Shares = ({ match, shares, addComment, deleteComment, toggleLike }) => {
               <Share
                 addComment={addComment}
                 deleteComment={deleteComment}
-                toggleLike={toggleLike}
-                shareOpened={shareId}
+                setLike={setLike}
+                isOpened={shareId}
                 {...share}
               />
             ))}

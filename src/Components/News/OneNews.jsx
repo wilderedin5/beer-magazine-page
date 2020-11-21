@@ -2,8 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { Button } from "antd";
-import { Note } from "../../Common/type";
-import Stars from "./Stars/Stars";
+import { Note } from "../Common/type";
+import Stars from "./Stars";
 
 const Container = styled.div`
   border: 1px solid #000;
@@ -22,8 +22,8 @@ const Tools = styled.div`
 const OneNews = ({
   newsOpened,
   theme,
-  newsText,
-  authorName,
+  text,
+  author,
   category,
   deleteNews,
   id,
@@ -33,8 +33,8 @@ const OneNews = ({
 }) => (
   <Container>
     <Note label="Тема" value={theme} />
-    <div>{newsOpened ? newsText : newsText.substring(0, 300) + "...."}</div>
-    <Note label="Автор" value={authorName} />
+    <div>{newsOpened ? text : text.substring(0, 300) + "...."}</div>
+    <Note label="Автор" value={author} />
     <Note label="Категорияа" value={category} />
     <Tools>
       <Button type="primary" onClick={() => deleteNews(id)}>

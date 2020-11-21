@@ -8,43 +8,45 @@ const Container = styled.div`
   position: relative;
 `;
 
-const Cart = styled.div`
+const CartContainer = styled.div`
   position: absolute;
   right: 0;
 `;
 
-const Header = (props) => (
+const Cart = ({ cart }) => (
+  <CartContainer>
+    <Menu.Item>
+      <NavLink to="/cart">
+        <Badge count={cart.length} showZero>
+          <Button type="primary">
+            <ShoppingCartOutlined />
+          </Button>
+        </Badge>
+      </NavLink>
+    </Menu.Item>
+  </CartContainer>
+);
+
+const MenuItem = ({ to, children, ...props }) => {
+  const url = `/${to}`;
+  return (
+    <Menu.Item key={url} {...props}>
+      <NavLink to={url} activeClassName="active">
+        {children}
+      </NavLink>
+    </Menu.Item>
+  );
+};
+
+const Header = ({ cart }) => (
   <Container>
     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
-      <Cart>
-        <Menu.Item>
-          <NavLink to="/cart">
-            <Badge count={props.cart.length} showZero>
-              <Button type="primary">
-                <ShoppingCartOutlined />
-              </Button>
-            </Badge>
-          </NavLink>
-        </Menu.Item>
-      </Cart>
-
-      <Menu.Item key="1">
-        <NavLink exact to="/">
-          Главная
-        </NavLink>
-      </Menu.Item>
-      <Menu.Item key="2">
-        <NavLink to="/news">Новости пивоварения</NavLink>
-      </Menu.Item>
-      <Menu.Item key="3">
-        <NavLink to="/chat">Чат пивоварения</NavLink>
-      </Menu.Item>
-      <Menu.Item key="4">
-        <NavLink to="/share">Акции</NavLink>
-      </Menu.Item>
-      <Menu.Item key="5">
-        <NavLink to="/contacts">Контакты</NavLink>
-      </Menu.Item>
+      <Cart cart={cart} />
+      <MenuItem to="">Главная</MenuItem>
+      <MenuItem to="news">Новости пивоварения</MenuItem>
+      <MenuItem to="chat">Чат пивоварения</MenuItem>
+      <MenuItem to="share">Акции</MenuItem>
+      <MenuItem to="contacts">Контакты</MenuItem>
     </Menu>
   </Container>
 );

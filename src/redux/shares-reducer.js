@@ -180,7 +180,7 @@ export const sharesReducer = (state = initialState, action) => {
   }
 };
 
-export const toggleLike = (shareId, commentId) => ({
+export const setLike = (shareId, commentId) => ({
   type: TOGGLE_LIKE_COMMENT_OF_SHARES,
   shareId,
   commentId,

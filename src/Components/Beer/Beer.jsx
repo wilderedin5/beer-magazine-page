@@ -1,31 +1,26 @@
 import React from "react";
-import { Button as BaseButton } from "antd";
+import { Button } from "antd";
 import styled from "@emotion/styled";
 import { Note } from "../Common/type";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #000;
-  padding: 10px 10px 70px 10px;
-  width: 24%;
-  margin-bottom: 10px;
-  position: relative;
+  padding: 10px;
 `;
 
-const ImageContainer = styled.div`
-  text-align: center;
-  & img {
-    width: 50px;
-    height: 130px;
-  }
+const Img = styled.img`
+  display: block;
+  margin: 0 auto;
+  width: 50px;
+  height: 130px;
 `;
 
-const Button = styled(BaseButton)`
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+const StyledButton = styled(Button)`
+  margin-top: 20px;
+  align-self: center;
 `;
 
 const Beer = ({
@@ -36,30 +31,29 @@ const Beer = ({
   abv,
   tips,
   contributed,
-  addItemToCart,
+  addProduct,
   beerId,
-  deleteItemFromCart,
-  beersInCart,
+  deleteProduct,
+  cartItems,
 }) => (
   <Container>
-    <ImageContainer>
-      <img src={image} alt="" />
-    </ImageContainer>
-    <Note label="Название" value={name} />
-    <Note label="Описание" value={description} />
-    <Note label="Сварен" value={date} />
-    <Note label="Крепость" value={abv} />
-    <Note label="Советы от пивоваров" value={tips} />
-    <Note label="Поставщик" value={contributed} />
-    <Button
-      disabled={addItemToCart && beersInCart.some((beer) => beer.id === beerId)}
+    <div>
+      <Img src={image} />
+      <Note label="Название" value={name} />
+      <Note label="Описание" value={description} />
+      <Note label="Сварен" value={date} />
+      <Note label="Крепость" value={abv} />
+      <Note label="Советы от пивоваров" value={tips} />
+      <Note label="Поставщик" value={contributed} />
+    </div>
+
+    <StyledButton
+      disabled={addProduct && cartItems.some((beer) => beer.id === beerId)}
       type="primary"
-      onClick={() =>
-        addItemToCart ? addItemToCart(beerId) : deleteItemFromCart(beerId)
-      }
+      onClick={() => (addProduct ? addProduct(beerId) : deleteProduct(beerId))}
     >
-      {addItemToCart ? "Добавить в корзину" : "Удалить из корзины"}
-    </Button>
+      {addProduct ? "Добавить в корзину" : "Удалить из корзины"}
+    </StyledButton>
   </Container>
 );
 

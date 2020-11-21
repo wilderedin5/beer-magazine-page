@@ -5,7 +5,7 @@ import {
   setCurrentPage,
   setAbvFilter,
 } from "../../redux/product-reducer";
-import { addItemToCart } from "../../redux/cart-reducer";
+import { addProduct } from "../../redux/cart-reducer";
 import ProductPage from "./ProductPage";
 
 const ProductPageContainer = (props) => {
@@ -20,30 +20,30 @@ const ProductPageContainer = (props) => {
 
   return (
     <ProductPage
-      addItemToCart={props.addItemToCart}
+      addProduct={props.addProduct}
       beers={props.beers}
       onPageChanged={onPageChanged}
       setAbvFilter={props.setAbvFilter}
       pageSize={props.pageSize}
-      totalItemsCount={props.totalItemsCount}
+      totalProducts={props.totalProducts}
       currentPage={props.currentPage}
-      beersInCart={props.beersInCart}
+      cartItems={props.cartItems}
     />
   );
 };
 
 const mapStateToProps = (state) => ({
   beers: state.productPage.beers,
-  beersInCart: state.cart.cart,
+  cartItems: state.cart.cart,
   currentPage: state.productPage.currentPage,
-  totalItemsCount: state.productPage.totalItemsCount,
+  totalProducts: state.productPage.totalProducts,
   pageSize: state.productPage.pageSize,
   abvFilter: state.productPage.abvFilter,
 });
 
 export default connect(mapStateToProps, {
   getBeersFromAPI,
-  addItemToCart,
+  addProduct,
   setCurrentPage,
   setAbvFilter,
 })(ProductPageContainer);

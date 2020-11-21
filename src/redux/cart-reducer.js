@@ -29,12 +29,12 @@ export const successAddedItemToCart = (beer) => ({
   beer,
 });
 
-export const deleteItemFromCart = (beerId) => ({
+export const deleteProduct = (beerId) => ({
   type: DELETE_ITEM_FROM_CART,
   beerId,
 });
 
-export const addItemToCart = (beerId) => (dispatch) => {
+export const addProduct = (beerId) => (dispatch) => {
   beerAPI.getOneBeer(beerId).then((response) => {
     dispatch(successAddedItemToCart(response.data));
   });

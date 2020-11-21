@@ -7,7 +7,7 @@ const SET_ABV_FILTER = "product-reducer/SET_ABV_FILTER";
 let initialState = {
   beers: [],
   pageSize: 10,
-  totalItemsCount: 200,
+  totalProducts: 200,
   currentPage: 1,
   abvFilter: 0,
 };

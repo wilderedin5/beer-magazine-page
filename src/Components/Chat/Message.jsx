@@ -9,25 +9,31 @@ const Comment = styled(BaseComment)`
   padding: 5px 10px;
 `;
 
-const Message = (props) => {
+const Message = ({
+  liked,
+  id,
+  likeCount,
+  author,
+  text,
+  deleteMessage,
+  setLike,
+}) => {
   const actions = [
     <span key="comment-basic-like">
       <Tooltip title="Like">
-        {React.createElement(props.liked ? DislikeFilled : LikeOutlined, {
-          onClick: () => props.toggleLike(props.id, !props.liked),
+        {React.createElement(liked ? DislikeFilled : LikeOutlined, {
+          onClick: () => setLike(id, !liked),
         })}
       </Tooltip>
-      <span className="comment-action">{props.likeCount}</span>
+      <span className="comment-action">{likeCount}</span>
     </span>,
-    <span onClick={() => props.deleteMessage(props.id)}>
-      Удалить сообщение
-    </span>,
+    <span onClick={() => deleteMessage(id)}>Удалить сообщение</span>,
   ];
   return (
     <Comment
       actions={actions}
-      author={<a>{props.authorName}</a>}
-      content={<p>{props.messageText}</p>}
+      author={<a>{author}</a>}
+      content={<p>{text}</p>}
     />
   );
 };

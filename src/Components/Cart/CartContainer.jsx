@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { connect } from "react-redux";
-import { deleteItemFromCart } from "../../redux/cart-reducer";
+import { deleteProduct } from "../../redux/cart-reducer";
 import Beer from "../Beer/Beer";
 
 const Container = styled.div`
@@ -10,7 +10,7 @@ const Container = styled.div`
   flex-wrap: wrap;
 `;
 
-const Cart = ({ cart, deleteItemFromCart }) => (
+const Cart = ({ cart, deleteProduct }) => (
   <Container>
     {cart.map((beer) => (
       <Beer
@@ -21,7 +21,7 @@ const Cart = ({ cart, deleteItemFromCart }) => (
         contributed={beer.contributed_by}
         date={beer.first_brewed}
         abv={beer.abv}
-        deleteItemFromCart={deleteItemFromCart}
+        deleteProduct={deleteProduct}
         beerId={beer.id}
       />
     ))}
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => ({
   cart: state.cart.cart,
 });
 
-export default connect(mapStateToProps, { deleteItemFromCart })(Cart);
+export default connect(mapStateToProps, { deleteProduct })(Cart);
