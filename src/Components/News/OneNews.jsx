@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { Button } from "antd";
-import { Note } from "../Common/type";
-import Stars from "./Stars";
+import { Note, Button } from "../Common/type";
+import { Stars } from "./Stars";
 
 const Container = styled.div`
   border: 1px solid #000;
@@ -19,43 +18,34 @@ const Tools = styled.div`
   }
 `;
 
-const OneNews = ({
-  newsOpened,
+export const OneNews = ({
+  isOpened,
   theme,
   text,
   author,
   category,
   deleteNews,
   id,
-  totalStars,
-  starSelected,
-  changeRating,
+  rating,
+  selected,
+  setRating,
 }) => (
   <Container>
     <Note label="Тема" value={theme} />
-    <div>{newsOpened ? text : text.substring(0, 300) + "...."}</div>
+    <div>{isOpened ? text : text.substring(0, 300) + "...."}</div>
     <Note label="Автор" value={author} />
-    <Note label="Категорияа" value={category} />
+    <Note label="Категория" value={category} />
     <Tools>
-      <Button type="primary" onClick={() => deleteNews(id)}>
-        Удалить новость
-      </Button>
+      <Button onClick={() => deleteNews(id)}>Удалить новость</Button>
 
-      <NavLink to={`/news/${newsOpened ? "" : id}`}>
-        <Button type="primary">
-          {newsOpened
+      <NavLink to={`/news/${isOpened ? "" : id}`}>
+        <Button>
+          {isOpened
             ? "Вернуться на страницу новостей"
             : "Перейти на страницу новости"}
         </Button>
       </NavLink>
     </Tools>
-    <Stars
-      id={id}
-      starSelected={starSelected}
-      totalStars={totalStars}
-      changeRating={changeRating}
-    />
+    <Stars id={id} selected={selected} rating={rating} setRating={setRating} />
   </Container>
 );
-
-export default OneNews;

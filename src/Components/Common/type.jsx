@@ -22,3 +22,14 @@ export const Input = styled.input`
   margin-bottom: 10px;
   border: 1px solid gray;
 `;
+
+export const Button = styled.button`
+  padding: 5px 16px;
+  border: 1px solid gray;
+  line-height: 1.5;
+  color: #000;
+  :disabled {
+    background: #000;
+    color: #fff;
+  }
+`;

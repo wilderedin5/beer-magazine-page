@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Pagination } from "antd";
-import Beer from "../Beer/Beer";
+import { Beer } from "../Beer/Beer";
 import FilterForm from "./FilterForm";
-
-const Container = styled.div``;
 
 const Panel = styled.div`
   display: flex;
@@ -18,11 +16,12 @@ const Products = styled.div`
   grid-gap: 20px;
 `;
 
-const ProductPage = ({
+export const ProductPage = ({
   setAbvFilter,
   onPageChanged,
-  totalProducts,
+  total,
   addProduct,
+  deleteProduct,
   cartItems,
   beers,
 }) => {
@@ -31,12 +30,12 @@ const ProductPage = ({
   };
 
   return (
-    <Container>
+    <div>
       <Panel>
         <Pagination
           defaultCurrent={1}
           onChange={onPageChanged}
-          total={totalProducts}
+          total={total}
           showSizeChanger={false}
         />
         <FilterForm onSubmit={onSubmit} />
@@ -45,21 +44,13 @@ const ProductPage = ({
       <Products>
         {beers.map((beer) => (
           <Beer
-            image={beer.image_url}
-            name={beer.name}
-            description={beer.description}
-            tips={beer.brewers_tips}
-            beerId={beer.id}
-            contributed={beer.contributed_by}
-            date={beer.first_brewed}
-            abv={beer.abv}
+            {...beer}
+            deleteProduct={deleteProduct}
             addProduct={addProduct}
             cartItems={cartItems}
           />
         ))}
       </Products>
-    </Container>
+    </div>
   );
 };
-
-export default ProductPage;

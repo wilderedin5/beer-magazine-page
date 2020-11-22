@@ -1,17 +1,10 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import { Button } from "antd";
-import styled from "@emotion/styled";
 import { Field } from "../../hoc/createFormElement";
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
+import { Button } from "../Common/type";
 
 const NewsForm = ({ handleSubmit }) => (
-  <Form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit}>
     <Field maxLength="60" placeholder="Name" name="author" />
     <Field maxLength="60" placeholder="Theme" name="theme" />
     <Field maxLength="60" placeholder="Category" name="category" />
@@ -21,10 +14,8 @@ const NewsForm = ({ handleSubmit }) => (
       placeholder="Text"
       name="text"
     />
-    <Button type="primary" htmlType="submit">
-      Отправить новость
-    </Button>
-  </Form>
+    <Button>Отправить новость</Button>
+  </form>
 );
 
 export default reduxForm({

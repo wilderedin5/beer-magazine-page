@@ -10,56 +10,56 @@ let initialState = {
       id: 1,
       author: "Denis",
       text: "Это первый комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 34,
     },
     {
       id: 2,
       author: "Elena",
       text: "Это второй комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 2,
     },
     {
       id: 3,
       author: "Sveta",
       text: "Это третий комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 98,
     },
     {
       id: 4,
       author: "Ivan",
       text: "Это четвертый комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 276,
     },
     {
       id: 5,
       author: "Dmitry",
       text: "Это пятый комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 4,
     },
     {
       id: 6,
       author: "George",
       text: "Это шестой комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 0,
     },
     {
       id: 7,
       author: "Vladimir",
       text: "Это седьмой комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 1,
     },
     {
       id: 8,
       author: "Anna",
       text: "Это восьмой комментс",
-      liked: null,
+      hasLike: null,
       likeCount: 9,
     },
   ],
@@ -79,8 +79,8 @@ const chatReducer = (state = initialState, action) => {
           if (message.id === action.messageId) {
             return {
               ...message,
-              liked: action.liked,
-              likeCount: action.liked
+              hasLike: action.hasLike,
+              likeCount: action.hasLike
                 ? ++message.likeCount
                 : --message.likeCount,
             };
@@ -105,15 +105,15 @@ const chatReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = (id, author, text, liked, likeCount) => ({
+export const addMessage = (id, author, text, hasLike, likeCount) => ({
   type: ADD_MESSAGE_TO_CHAT,
-  message: { id, author, text, liked, likeCount },
+  message: { id, author, text, hasLike, likeCount },
 });
 
-export const setLike = (messageId, liked) => ({
+export const setLike = (messageId, hasLike) => ({
   type: TOGGLE_LIKE_MESSAGE,
   messageId,
-  liked,
+  hasLike,
 });
 
 export const deleteMessage = (messageId) => ({

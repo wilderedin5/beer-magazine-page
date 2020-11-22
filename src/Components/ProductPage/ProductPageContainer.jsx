@@ -5,8 +5,8 @@ import {
   setCurrentPage,
   setAbvFilter,
 } from "../../redux/product-reducer";
-import { addProduct } from "../../redux/cart-reducer";
-import ProductPage from "./ProductPage";
+import { addProduct, deleteProduct } from "../../redux/cart-reducer";
+import { ProductPage } from "./ProductPage";
 
 const ProductPageContainer = (props) => {
   useEffect(() => {
@@ -22,10 +22,11 @@ const ProductPageContainer = (props) => {
     <ProductPage
       addProduct={props.addProduct}
       beers={props.beers}
+      deleteProduct={props.deleteProduct}
       onPageChanged={onPageChanged}
       setAbvFilter={props.setAbvFilter}
       pageSize={props.pageSize}
-      totalProducts={props.totalProducts}
+      total={props.total}
       currentPage={props.currentPage}
       cartItems={props.cartItems}
     />
@@ -36,7 +37,7 @@ const mapStateToProps = (state) => ({
   beers: state.productPage.beers,
   cartItems: state.cart.cart,
   currentPage: state.productPage.currentPage,
-  totalProducts: state.productPage.totalProducts,
+  total: state.productPage.total,
   pageSize: state.productPage.pageSize,
   abvFilter: state.productPage.abvFilter,
 });
@@ -46,4 +47,5 @@ export default connect(mapStateToProps, {
   addProduct,
   setCurrentPage,
   setAbvFilter,
+  deleteProduct,
 })(ProductPageContainer);

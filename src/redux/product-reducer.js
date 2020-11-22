@@ -7,7 +7,7 @@ const SET_ABV_FILTER = "product-reducer/SET_ABV_FILTER";
 let initialState = {
   beers: [],
   pageSize: 10,
-  totalProducts: 200,
+  total: 200,
   currentPage: 1,
   abvFilter: 0,
 };
@@ -51,7 +51,28 @@ export const setAbvFilter = (abvFilter) => ({
 
 export const getBeersFromAPI = (page, pageSize, abv) => (dispatch) => {
   beerAPI.getBeers(page, pageSize, abv).then((response) => {
-    dispatch(addBeers(response.data));
+    const formattedResponse = response.data.map(
+      ({
+        image_url,
+        name,
+        desc,
+        brewers_tips,
+        id,
+        contributed_by,
+        first_brewed,
+        abv,
+      }) => ({
+        image: image_url,
+        name,
+        desc,
+        tips: brewers_tips,
+        beerId: id,
+        contributed: contributed_by,
+        date: first_brewed,
+        abv,
+      })
+    );
+    dispatch(addBeers(formattedResponse));
   });
 };
 

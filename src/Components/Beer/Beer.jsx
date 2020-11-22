@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "antd";
 import styled from "@emotion/styled";
-import { Note } from "../Common/type";
+import { Note, Button } from "../Common/type";
 
 const Container = styled.div`
   display: flex;
@@ -23,10 +22,10 @@ const StyledButton = styled(Button)`
   align-self: center;
 `;
 
-const Beer = ({
+export const Beer = ({
   image,
   name,
-  description,
+  desc,
   date,
   abv,
   tips,
@@ -35,26 +34,25 @@ const Beer = ({
   beerId,
   deleteProduct,
   cartItems,
-}) => (
-  <Container>
-    <div>
-      <Img src={image} />
-      <Note label="Название" value={name} />
-      <Note label="Описание" value={description} />
-      <Note label="Сварен" value={date} />
-      <Note label="Крепость" value={abv} />
-      <Note label="Советы от пивоваров" value={tips} />
-      <Note label="Поставщик" value={contributed} />
-    </div>
+}) => {
+  const isReserve = cartItems.some(({ id }) => id === beerId);
+  return (
+    <Container>
+      <div>
+        <Img src={image} />
+        <Note label="Название" value={name} />
+        <Note label="Описание" value={desc} />
+        <Note label="Сварен" value={date} />
+        <Note label="Крепость" value={abv} />
+        <Note label="Советы от пивоваров" value={tips} />
+        <Note label="Поставщик" value={contributed} />
+      </div>
 
-    <StyledButton
-      disabled={addProduct && cartItems.some((beer) => beer.id === beerId)}
-      type="primary"
-      onClick={() => (addProduct ? addProduct(beerId) : deleteProduct(beerId))}
-    >
-      {addProduct ? "Добавить в корзину" : "Удалить из корзины"}
-    </StyledButton>
-  </Container>
-);
-
-export default Beer;
+      <StyledButton
+        onClick={() => (isReserve ? deleteProduct(beerId) : addProduct(beerId))}
+      >
+        {isReserve ? "Удалить из корзины" : "Добавить в корзину"}
+      </StyledButton>
+    </Container>
+  );
+};

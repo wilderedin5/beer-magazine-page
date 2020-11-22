@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Star from "./Star";
+
+const Star = styled.div`
+  font-size: 18px;
+  cursor: pointer;
+  color: ${(p) => (p.selected ? "orange" : "grey")};
+  margin-left: 7px;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -9,18 +15,16 @@ const Container = styled.div`
   right: 10px;
 `;
 
-const Stars = ({ totalStars, id, starSelected, changeRating }) => (
+export const Stars = ({ rating, id, selected, setRating }) => (
   <Container>
-    {[...Array(totalStars)].map((star, index) => (
+    {[...Array(rating)].map((star, i) => (
       <Star
-        key={index}
-        id={id}
-        index={index}
-        changeRating={changeRating}
-        selected={index < starSelected}
-      />
+        key={i}
+        onClick={() => setRating(id, i + 1)}
+        selected={i < selected}
+      >
+        &#9733;
+      </Star>
     ))}
   </Container>
 );
-
-export default Stars;

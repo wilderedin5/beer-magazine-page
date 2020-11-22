@@ -16,27 +16,27 @@ let initialState = {
     {
       id: 1,
       emailAddress: "wildnefalem5@gmail.com",
-      descriptionOfContact: "директор",
+      desc: "директор",
     },
     {
       id: 2,
       emailAddress: "production@mail.ru",
-      descriptionOfContact: "по всем вопросам заказов и для консультации",
+      desc: "по всем вопросам заказов и для консультации",
     },
     {
       id: 3,
       emailAddress: "reklama@yahoo.com",
-      descriptionOfContact: "по вопросам рекламы и сотрудничества",
+      desc: "по вопросам рекламы и сотрудничества",
     },
     {
       id: 4,
       emailAddress: "it-teh@gmail.com",
-      descriptionOfContact: "по техническим вопросам работы сайта",
+      desc: "по техническим вопросам работы сайта",
     },
     {
       id: 5,
       emailAddress: "logisticsr@gmail.com",
-      descriptionOfContact: "предложения по товарам и услугам",
+      desc: "предложения по товарам и услугам",
     },
   ],
   requisites: [

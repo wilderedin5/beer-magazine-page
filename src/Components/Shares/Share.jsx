@@ -2,10 +2,13 @@ import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { v4 } from "uuid";
-import { Button } from "antd";
-import { Note } from "../Common/type";
-import CommentShare from "./CommentShare";
+import { Comment as BaseComment } from "../Common/comment";
+import { Note, Button } from "../Common/type";
 import ShareForm from "./ShareForm";
+
+const StyledComment = styled(BaseComment)`
+  margin-bottom: 10px;
+`;
 
 const Container = styled.div`
   border: 1px solid #000;
@@ -14,7 +17,7 @@ const Container = styled.div`
   padding: 10px;
 `;
 
-const Img = styled.div`
+const Img = styled.img`
   width: 100%;
   height: 300px;
 `;
@@ -23,49 +26,49 @@ const Comments = styled.div`
   margin-top: 10px;
 `;
 
-const Share = ({
+export const Share = ({
   addComment,
   isOpened,
-  descShare,
-  descShareFull,
-  imageShare,
-  shareName,
+  desc,
+  img,
+  name,
   id,
-  timeShare,
+  time,
   comment,
   setLike,
   deleteComment,
 }) => {
-  const onSubmit = ({ text, name }) => {
-    addComment(v4(), text, name, false, 0, +isOpened);
+  const onSubmit = ({ text, author }) => {
+    addComment(v4(), text, author, false, 0, +isOpened);
   };
   return (
     <Container isOpened={isOpened}>
-      <Img src={imageShare} />
-      <Note label="Акция" value={shareName} />
-      <Note label="Описание" value={isOpened ? descShareFull : descShare} />
-      <Note label="Дата проведения" value={timeShare} />
+      <Img src={img} />
+      <Note label="Акция" value={name} />
+      <Note
+        label="Описание"
+        value={isOpened ? desc : `${desc.slice(0, 200)}...`}
+      />
+      <Note label="Дата проведения" value={time} />
       <NavLink to={`/share/${isOpened ? "" : id}`}>
-        <Button type="primary">
+        <Button>
           {isOpened
             ? "Вернуться на страницу акций"
             : "Перейти на страницу акции"}
         </Button>
       </NavLink>
-      <Comments>
-        {isOpened &&
-          comment.map((comment) => (
-            <CommentShare
-              deleteComment={deleteComment}
-              shareId={isOpened}
-              setLike={setLike}
+      {isOpened && (
+        <Comments>
+          {comment.map((comment) => (
+            <StyledComment
+              onRemove={() => deleteComment(+isOpened, comment.id)}
+              onLike={() => setLike(+isOpened, comment.id)}
               {...comment}
             />
           ))}
-      </Comments>
+        </Comments>
+      )}
       {isOpened && <ShareForm onSubmit={onSubmit} />}
     </Container>
   );
 };
-
-export default Share;

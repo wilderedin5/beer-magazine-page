@@ -11,7 +11,7 @@ let initialState = {
       theme: "ПРОСТЫМИ СЛОВАМИ О ХИМИЧЕСКОМ СОСТАВЕ ВОДЫ ДЛЯ ПИВОВАРЕНИЯ",
       author: "Denis",
       category: "Секреты пивоварения",
-      starSelected: 4,
+      selected: 4,
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ let initialState = {
         "ПОЧТИ ВСЁ, ЧТО ВАМ НУЖНО ЗНАТЬ О СОЛОДЕ – ТОНКОСТИ ВЫБОРА ГЛАВНОГО ПИВНОГО ИНГРЕДИЕНТА",
       author: "Anton",
       category: "Пивоварение",
-      starSelected: 0,
+      selected: 0,
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ let initialState = {
       theme: "ХМЕЛЬ ДЛЯ ПИВА: РУКОВОДСТВО ДЛЯ НАЧИНАЮЩИХ И НЕ ТОЛЬКО",
       author: "Sergey",
       category: "Пивоварение",
-      starSelected: 5,
+      selected: 5,
     },
     {
       id: 4,
@@ -39,7 +39,7 @@ let initialState = {
       theme: "РУКОВОДСТВО ПО ВЫБОРУ ПИВНЫХ ДРОЖЖЕЙ",
       author: "Elena",
       category: "Пивоварение",
-      starSelected: 1,
+      selected: 1,
     },
     {
       id: 5,
@@ -48,10 +48,10 @@ let initialState = {
       theme: "ИМБИРНОЕ ПИВО В ДЕТАЛЯХ",
       author: "Ivan",
       category: "Пивоварение",
-      starSelected: 3,
+      selected: 3,
     },
   ],
-  totalStars: 5,
+  rating: 5,
 };
 
 const newsReducer = (state = initialState, action) => {
@@ -71,7 +71,7 @@ const newsReducer = (state = initialState, action) => {
         ...state,
         news: state.news.map((news) => {
           if (news.id === action.newsId) {
-            return { ...news, starSelected: action.starSelected };
+            return { ...news, selected: action.selected };
           }
           return news;
         }),
@@ -91,10 +91,10 @@ export const addNews = (id, text, theme, author, category) => ({
   newsItem: { id, text, theme, author, category },
 });
 
-export const changeRating = (newsId, starSelected) => ({
+export const setRating = (newsId, selected) => ({
   type: CHANGE_NEWS_RATING,
   newsId,
-  starSelected,
+  selected,
 });
 
 export default newsReducer;

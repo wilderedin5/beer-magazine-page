@@ -1,23 +1,14 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import { Button } from "antd";
-import styled from "@emotion/styled";
 import { Field } from "../../hoc/createFormElement";
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
+import { Button } from "../Common/type";
 
 const ShareForm = ({ handleSubmit }) => (
-  <Form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit}>
     <Field component="textarea" placeholder="Text..." name="text" />
-    <Field placeholder="Name" name="name" maxLength="60" />
-    <Button htmlType="submit" type="primary">
-      Add Comment
-    </Button>
-  </Form>
+    <Field placeholder="Name" name="author" maxLength="60" />
+    <Button>Add Comment</Button>
+  </form>
 );
 
 export default reduxForm({
