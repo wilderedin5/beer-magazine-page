@@ -4,8 +4,8 @@ import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { v4 } from "uuid";
 import { deleteNews, addNews, setRating } from "../../redux/news-reducer";
-import { OneNews } from "./OneNews";
-import NewsForm from "./NewsForm";
+import { NewsItem } from "./news-item";
+import NewsForm from "./news-form";
 
 const News = ({ match, deleteNews, rating, setRating, news, addNews }) => {
   const newsId = match.params.id;
@@ -20,7 +20,7 @@ const News = ({ match, deleteNews, rating, setRating, news, addNews }) => {
   return (
     <div>
       {formattedNews.map((news) => (
-        <OneNews
+        <NewsItem
           {...news}
           isOpened={newsId}
           deleteNews={deleteNews}

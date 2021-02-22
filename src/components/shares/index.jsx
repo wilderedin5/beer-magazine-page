@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { setLike, deleteComment, addComment } from "../../redux/shares-reducer";
-import { Share } from "./Share";
+import { Share } from "./share";
 
 const Container = styled.div`
   display: flex;

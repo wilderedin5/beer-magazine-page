@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Pagination } from "antd";
-import { Beer } from "../Beer/Beer";
-import FilterForm from "./FilterForm";
+import { Beer } from "../beer";
+import FilterForm from "./filter-form";
 
 const Panel = styled.div`
   display: flex;

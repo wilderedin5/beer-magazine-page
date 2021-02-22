@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { connect } from "react-redux";
 import { deleteProduct } from "../../redux/cart-reducer";
-import { Beer } from "../Beer/Beer";
+import { Beer } from "../beer";
 
 const Container = styled.div`
   display: grid;

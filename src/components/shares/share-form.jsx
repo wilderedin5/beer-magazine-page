@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm } from "redux-form";
 import { Field } from "../../hoc/createFormElement";
-import { Button } from "../Common/type";
+import { Button } from "../common/type";
 
 const ShareForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>

@@ -1,13 +1,13 @@
 import React from "react";
 import style from "./App.module.scss";
-import HeaderContainer from "./Components/Header/HeaderContainer";
-import ProductPageContainer from "./Components/ProductPage/ProductPageContainer";
+import HeaderContainer from "./components/header";
+import ProductPageContainer from "./components/product-page";
 import { Route } from "react-router-dom";
-import CartContainer from "./Components/Cart/CartContainer";
-import NewsContainer from "./Components/News/NewsContainer";
-import ChatContainer from "./Components/Chat/ChatContainer";
-import SharesContainer from "./Components/Shares/SharesContainer";
-import ContactsContainer from "./Components/Contacts/ContactsContainer";
+import CartContainer from "./components/cart";
+import NewsContainer from "./components/news";
+import ChatContainer from "./components/chat";
+import SharesContainer from "./components/shares";
+import ContactsContainer from "./components/contacts";
 import { Layout } from "antd";
 
 const App = () => {

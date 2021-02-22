@@ -6,7 +6,7 @@ import {
   setAbvFilter,
 } from "../../redux/product-reducer";
 import { addProduct, deleteProduct } from "../../redux/cart-reducer";
-import { ProductPage } from "./ProductPage";
+import { ProductPage } from "./product-page";
 
 const ProductPageContainer = (props) => {
   useEffect(() => {

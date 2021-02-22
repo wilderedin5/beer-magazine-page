@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 import styled from "@emotion/styled";
 import { Divider } from "antd";
-import { Note } from "../Common/type";
+import { Note } from "../common/type";
 
 const List = styled.div`
   border: 1px solid gray;

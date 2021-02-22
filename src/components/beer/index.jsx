@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Note, Button } from "../Common/type";
+import { Note, Button } from "../common/type";
 
 const Container = styled.div`
   display: flex;

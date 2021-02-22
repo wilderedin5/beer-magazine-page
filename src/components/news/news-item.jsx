@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
-import { Note, Button } from "../Common/type";
-import { Stars } from "./Stars";
+import { Note, Button } from "../common/type";
+import { Stars } from "./stars";
 
 const Container = styled.div`
   border: 1px solid #000;
@@ -18,7 +18,7 @@ const Tools = styled.div`
   }
 `;
 
-export const OneNews = ({
+export const NewsItem = ({
   isOpened,
   theme,
   text,

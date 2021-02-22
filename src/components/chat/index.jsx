@@ -8,8 +8,8 @@ import {
   deleteMessage,
   eraseChat,
 } from "../../redux/chat-reducer";
-import { Comment } from "../Common/comment";
-import ChatForm from "./ChatForm";
+import { Comment } from "../common/comment";
+import ChatForm from "./chat-form";
 
 const StyledComment = styled(Comment)`
   border: 1px solid #000;

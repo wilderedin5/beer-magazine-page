@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Field as BaseField } from "redux-form";
-import { maxLength, requiredField } from "../Validators/validate";
+import { maxLength, requiredField } from "../validators/validate";
 import {
   Textarea as StyledTextarea,
   Input as StyledInput,
-} from "../Components/Common/type";
+} from "../components/common/type";
 
 const Error = styled.div`
   color: red;

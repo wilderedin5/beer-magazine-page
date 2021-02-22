@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Badge, Menu } from "antd";
-import { Button } from "../Common/type";
+import { Button } from "../common/type";
 
 const Container = styled.div`
   position: relative;

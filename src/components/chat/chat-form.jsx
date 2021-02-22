@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { reduxForm } from "redux-form";
 import { Field } from "../../hoc/createFormElement";
-import { Button } from "../Common/type";
+import { Button } from "../common/type";
 
 const StyledButton = styled(Button)`
   & + & {

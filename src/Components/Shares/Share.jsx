@@ -2,9 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 import { v4 } from "uuid";
-import { Comment as BaseComment } from "../Common/comment";
-import { Note, Button } from "../Common/type";
-import ShareForm from "./ShareForm";
+import { Comment as BaseComment } from "../common/comment";
+import { Note, Button } from "../common/type";
+import ShareForm from "./share-form";
 
 const StyledComment = styled(BaseComment)`
   margin-bottom: 10px;
