@@ -5,7 +5,10 @@ const Star = styled.div`
   font-size: 18px;
   cursor: pointer;
   color: ${(p) => (p.selected ? "orange" : "grey")};
-  margin-left: 7px;
+
+  & + & {
+    margin-left: 7px;
+  }
 `;
 
 const Container = styled.div`

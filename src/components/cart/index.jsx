@@ -6,14 +6,14 @@ import { Beer } from "../beer";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 24%);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
 `;
 
 const Cart = ({ cart, deleteProduct }) => (
   <Container>
-    {cart.map((beer) => (
-      <Beer {...beer} deleteProduct={deleteProduct} />
+    {cart.map((beer, index) => (
+      <Beer beer={beer} onDelete={deleteProduct} key={index} />
     ))}
   </Container>
 );

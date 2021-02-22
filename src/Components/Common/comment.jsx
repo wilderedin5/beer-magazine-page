@@ -8,7 +8,7 @@ const Container = styled.div`
   grid-template-columns: 32px auto;
   grid-column-gap: 20px;
   border: 1px solid gray;
-  padding: 10px;
+  padding: 5px 10px;
 `;
 
 const Avatar = styled.img`

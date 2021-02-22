@@ -32,7 +32,7 @@ export const NewsItem = ({
 }) => (
   <Container>
     <Note label="Тема" value={theme} />
-    <div>{isOpened ? text : text.substring(0, 300) + "...."}</div>
+    <div>{isOpened ? text : text.substring(0, 300)}</div>
     <Note label="Автор" value={author} />
     <Note label="Категория" value={category} />
     <Tools>
@@ -40,9 +40,7 @@ export const NewsItem = ({
 
       <NavLink to={`/news/${isOpened ? "" : id}`}>
         <Button>
-          {isOpened
-            ? "Вернуться на страницу новостей"
-            : "Перейти на страницу новости"}
+          {isOpened ? "Вернуться" : "Перейти"} на страницу новостей
         </Button>
       </NavLink>
     </Tools>

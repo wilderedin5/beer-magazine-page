@@ -15,6 +15,14 @@ const CartContainer = styled.div`
   right: 0;
 `;
 
+const MenuItem = ({ to, children, ...rest }) => (
+  <Menu.Item {...rest}>
+    <NavLink to={`/${to}`} activeClassName="active">
+      {children}
+    </NavLink>
+  </Menu.Item>
+);
+
 const Cart = ({ cart }) => (
   <CartContainer>
     <Menu.Item>
@@ -29,20 +37,9 @@ const Cart = ({ cart }) => (
   </CartContainer>
 );
 
-const MenuItem = ({ to, children, ...props }) => {
-  const url = `/${to}`;
-  return (
-    <Menu.Item key={url} {...props}>
-      <NavLink to={url} activeClassName="active">
-        {children}
-      </NavLink>
-    </Menu.Item>
-  );
-};
-
 const Header = ({ cart }) => (
   <Container>
-    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+    <Menu theme="dark" mode="horizontal">
       <Cart cart={cart} />
       <MenuItem to="">Главная</MenuItem>
       <MenuItem to="news">Новости пивоварения</MenuItem>

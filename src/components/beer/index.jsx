@@ -11,10 +11,9 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-  display: block;
-  margin: 0 auto;
   width: 50px;
   height: 130px;
+  align-self: center;
 `;
 
 const StyledButton = styled(Button)`
@@ -22,34 +21,20 @@ const StyledButton = styled(Button)`
   align-self: center;
 `;
 
-export const Beer = ({
-  image,
-  name,
-  desc,
-  date,
-  abv,
-  tips,
-  contributed,
-  addProduct,
-  beerId,
-  deleteProduct,
-  cartItems,
-}) => {
+export const Beer = ({ beer, onAdd, onDelete, cartItems }) => {
+  const { image, name, desc, date, abv, tips, contributed, beerId } = beer;
   const isReserve = cartItems.some(({ id }) => id === beerId);
   return (
     <Container>
-      <div>
-        <Img src={image} />
-        <Note label="Название" value={name} />
-        <Note label="Описание" value={desc} />
-        <Note label="Сварен" value={date} />
-        <Note label="Крепость" value={abv} />
-        <Note label="Советы от пивоваров" value={tips} />
-        <Note label="Поставщик" value={contributed} />
-      </div>
-
+      <Img src={image} />
+      <Note label="Название" value={name} />
+      <Note label="Описание" value={desc} />
+      <Note label="Сварен" value={date} />
+      <Note label="Крепость" value={abv} />
+      <Note label="Советы от пивоваров" value={tips} />
+      <Note label="Поставщик" value={contributed} />
       <StyledButton
-        onClick={() => (isReserve ? deleteProduct(beerId) : addProduct(beerId))}
+        onClick={() => (isReserve ? onDelete(beerId) : onAdd(beerId))}
       >
         {isReserve ? "Удалить из корзины" : "Добавить в корзину"}
       </StyledButton>

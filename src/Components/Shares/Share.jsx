@@ -27,42 +27,34 @@ const Comments = styled.div`
 `;
 
 export const Share = ({
-  addComment,
+  share,
+  onAddComment,
+  onCommentDelete,
+  onCommentLike,
   isOpened,
-  desc,
-  img,
-  name,
-  id,
-  time,
-  comment,
-  setLike,
-  deleteComment,
 }) => {
+  const { desc, img, name, id, time, comment } = share;
   const onSubmit = ({ text, author }) => {
-    addComment(v4(), text, author, false, 0, +isOpened);
+    onAddComment(v4(), text, author, false, 0, +isOpened);
   };
+
   return (
     <Container isOpened={isOpened}>
       <Img src={img} />
       <Note label="Акция" value={name} />
-      <Note
-        label="Описание"
-        value={isOpened ? desc : `${desc.slice(0, 200)}...`}
-      />
+      <Note label="Описание" value={isOpened ? desc : desc.slice(0, 200)} />
       <Note label="Дата проведения" value={time} />
       <NavLink to={`/share/${isOpened ? "" : id}`}>
         <Button>
-          {isOpened
-            ? "Вернуться на страницу акций"
-            : "Перейти на страницу акции"}
+          {isOpened ? "Вернуться" : "Перейти"} на страницу новостей
         </Button>
       </NavLink>
       {isOpened && (
         <Comments>
           {comment.map((comment) => (
             <StyledComment
-              onRemove={() => deleteComment(+isOpened, comment.id)}
-              onLike={() => setLike(+isOpened, comment.id)}
+              onRemove={() => onCommentDelete(+isOpened, comment.id)}
+              onLike={() => onCommentLike(+isOpened, comment.id)}
               {...comment}
             />
           ))}

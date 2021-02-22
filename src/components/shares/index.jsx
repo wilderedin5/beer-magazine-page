@@ -14,21 +14,21 @@ const Container = styled.div`
 
 const Shares = ({ match, shares, addComment, deleteComment, setLike }) => {
   const shareId = match.params.id;
+  const formatShares = !shareId
+    ? shares
+    : shares.filter((share) => String(share.id) === shareId);
+
   return (
     <Container>
-      {!shareId
-        ? shares.map((share) => <Share {...share} />)
-        : shares
-            .filter((share) => String(share.id) === shareId)
-            .map((share) => (
-              <Share
-                addComment={addComment}
-                deleteComment={deleteComment}
-                setLike={setLike}
-                isOpened={shareId}
-                {...share}
-              />
-            ))}
+      {formatShares.map((share) => (
+        <Share
+          onAddComment={addComment}
+          onCommentDelete={deleteComment}
+          onCommentLike={setLike}
+          isOpened={shareId}
+          share={share}
+        />
+      ))}
     </Container>
   );
 };

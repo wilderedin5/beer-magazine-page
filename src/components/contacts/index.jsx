@@ -9,20 +9,13 @@ const List = styled.div`
   padding: 10px;
 `;
 
-const Requisite = ({
-  name,
-  nalogNumber,
-  legalAddress,
-  bankName,
-  checkingNumber,
-  bik,
-}) => (
+const Requisite = ({ name, nalogId, address, bankName, payNumber, bik }) => (
   <div>
     <Note label="Имя" value={name} />
-    <Note label="ИНН" value={nalogNumber} />
-    <Note label="Юридический адрес" value={legalAddress} />
+    <Note label="ИНН" value={nalogId} />
+    <Note label="Юридический адрес" value={address} />
     <Note label="Банк" value={bankName} />
-    <Note label="Расчетный счет" value={checkingNumber} />
+    <Note label="Расчетный счет" value={payNumber} />
     <Note label="БИК" value={bik} />
   </div>
 );

@@ -13,8 +13,10 @@ import ChatForm from "./chat-form";
 
 const StyledComment = styled(Comment)`
   border: 1px solid #000;
-  margin-bottom: 10px;
-  padding: 5px 10px;
+
+  & + & {
+    margin-top: 10px;
+  }
 `;
 
 const Chat = ({ eraseChat, addMessage, setLike, deleteMessage, messages }) => {

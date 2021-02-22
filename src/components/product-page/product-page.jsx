@@ -7,12 +7,13 @@ import FilterForm from "./filter-form";
 const Panel = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 `;
 
 const Products = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 24%);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
 `;
 
@@ -42,12 +43,13 @@ export const ProductPage = ({
       </Panel>
 
       <Products>
-        {beers.map((beer) => (
+        {beers.map((beer, index) => (
           <Beer
-            {...beer}
-            deleteProduct={deleteProduct}
-            addProduct={addProduct}
+            beer={beer}
+            onDelete={deleteProduct}
+            onAdd={addProduct}
             cartItems={cartItems}
+            key={index}
           />
         ))}
       </Products>
