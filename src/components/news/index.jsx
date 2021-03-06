@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { v4 } from "uuid";
-import { deleteNews, addNews, setRating } from "../../redux/news-reducer";
+import { manageNews, changeRating } from "../../redux/news-reducer";
 import { NewsItem } from "./news-item";
 import NewsForm from "./news-form";
 
-const News = ({ match, deleteNews, rating, setRating, news, addNews }) => {
+const News = ({ match, rating, changeRating, news, manageNews }) => {
   const newsId = match.params.id;
   const handleSubmit = ({ text, theme, author, category }) => {
-    addNews(v4(), text, theme, author, category);
+    const id = v4();
+    manageNews(id, { id, text, theme, author, category });
   };
 
   const formattedNews = news.filter((news) =>
@@ -21,11 +22,11 @@ const News = ({ match, deleteNews, rating, setRating, news, addNews }) => {
     <div>
       {formattedNews.map((news) => (
         <NewsItem
-          {...news}
+          news={news}
           isOpened={newsId}
-          deleteNews={deleteNews}
+          onManage={manageNews}
           rating={rating}
-          setRating={setRating}
+          onRating={changeRating}
         />
       ))}
       {!newsId && <NewsForm onSubmit={handleSubmit} />}
@@ -40,5 +41,5 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, { deleteNews, addNews, setRating })
+  connect(mapStateToProps, { manageNews, changeRating })
 )(News);

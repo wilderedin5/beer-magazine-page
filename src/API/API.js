@@ -6,7 +6,7 @@ export const beerAPI = {
       `https://api.punkapi.com/v2/beers?page=${page}&per_page=${pageSize}&abv_gt=${abv}`
     );
   },
-  getOneBeer(beerId) {
-    return axios.get(`https://api.punkapi.com/v2/beers/${beerId}`);
+  getOneBeer(id) {
+    return axios.get(`https://api.punkapi.com/v2/beers/${id}`);
   },
 };

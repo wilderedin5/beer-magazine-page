@@ -2,26 +2,26 @@ import React from "react";
 import { v4 } from "uuid";
 import { connect } from "react-redux";
 import styled from "@emotion/styled";
-import {
-  addMessage,
-  setLike,
-  deleteMessage,
-  eraseChat,
-} from "../../redux/chat-reducer";
+import { manageChat, setLike, eraseChat } from "../../redux/chat-reducer";
 import { Comment } from "../common/comment";
 import ChatForm from "./chat-form";
 
 const StyledComment = styled(Comment)`
-  border: 1px solid #000;
-
   & + & {
     margin-top: 10px;
   }
 `;
 
-const Chat = ({ eraseChat, addMessage, setLike, deleteMessage, messages }) => {
+const Chat = ({ eraseChat, manageChat, setLike, messages }) => {
   const onSubmit = ({ author, text }) => {
-    addMessage(v4(), author, text, null, 0);
+    const id = v4();
+    manageChat(id, {
+      id,
+      author,
+      text,
+      hasLike: null,
+      likeCount: 0,
+    });
   };
 
   return (
@@ -29,7 +29,7 @@ const Chat = ({ eraseChat, addMessage, setLike, deleteMessage, messages }) => {
       {messages.map(({ id, hasLike, ...m }) => (
         <StyledComment
           onLike={() => setLike(id, !hasLike)}
-          onRemove={() => deleteMessage(id)}
+          onRemove={() => manageChat(id)}
           {...m}
         />
       ))}
@@ -43,8 +43,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  addMessage,
+  manageChat,
   setLike,
-  deleteMessage,
   eraseChat,
 })(Chat);

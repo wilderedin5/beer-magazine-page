@@ -1,5 +1,4 @@
-const DELETE_NEWS = "news-reducer/DELETE_NEWS";
-const ADD_NEWS = "news-reducer/ADD_NEWS";
+const MANAGE_NEWS = "news-reducer/MANAGE_NEWS";
 const CHANGE_NEWS_RATING = "news-reducer/CHANGE_NEWS_RATING";
 
 let initialState = {
@@ -56,42 +55,35 @@ let initialState = {
 
 const newsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DELETE_NEWS:
+    case MANAGE_NEWS:
       return {
         ...state,
-        news: state.news.filter((news) => news.id !== action.newsId),
+        news: state.news.some(({ id }) => id === action.id)
+          ? state.news.filter(({ id }) => id !== action.id)
+          : [...state.news, action.news],
       };
-    case ADD_NEWS:
-      return {
-        ...state,
-        news: [...state.news, action.newsItem],
-      };
+
     case CHANGE_NEWS_RATING:
       return {
         ...state,
-        news: state.news.map((news) => {
-          if (news.id === action.newsId) {
-            return { ...news, selected: action.selected };
-          }
-          return news;
-        }),
+        news: state.news.map((news) =>
+          news.id === action.newsId
+            ? { ...news, selected: action.selected }
+            : news
+        ),
       };
     default:
       return state;
   }
 };
 
-export const deleteNews = (newsId) => ({
-  type: DELETE_NEWS,
-  newsId,
+export const manageNews = (id, news) => ({
+  type: MANAGE_NEWS,
+  news,
+  id,
 });
 
-export const addNews = (id, text, theme, author, category) => ({
-  type: ADD_NEWS,
-  newsItem: { id, text, theme, author, category },
-});
-
-export const setRating = (newsId, selected) => ({
+export const changeRating = (newsId, selected) => ({
   type: CHANGE_NEWS_RATING,
   newsId,
   selected,

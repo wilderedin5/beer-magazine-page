@@ -1,4 +1,5 @@
 import { beerAPI } from "../API/API";
+import { formatBeers } from "../helpers/beer-formater";
 
 const ADD_BEERS = "product-reducer/ADD_BEERS";
 const SET_CURRENT_PAGE = "product-reducer/SET_CURRENT_PAGE";
@@ -39,7 +40,7 @@ export const addBeers = (beers) => ({
   beers,
 });
 
-export const setCurrentPage = (currentPage) => ({
+export const changePage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
@@ -49,29 +50,9 @@ export const setAbvFilter = (abvFilter) => ({
   abvFilter,
 });
 
-export const getBeersFromAPI = (page, pageSize, abv) => (dispatch) => {
+export const getBeers = (page, pageSize, abv) => (dispatch) => {
   beerAPI.getBeers(page, pageSize, abv).then((response) => {
-    const formattedResponse = response.data.map(
-      ({
-        image_url,
-        name,
-        desc,
-        brewers_tips,
-        id,
-        contributed_by,
-        first_brewed,
-        abv,
-      }) => ({
-        image: image_url,
-        name,
-        desc,
-        tips: brewers_tips,
-        beerId: id,
-        contributed: contributed_by,
-        date: first_brewed,
-        abv,
-      })
-    );
+    const formattedResponse = formatBeers(response.data);
     dispatch(addBeers(formattedResponse));
   });
 };

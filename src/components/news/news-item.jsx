@@ -18,32 +18,23 @@ const Tools = styled.div`
   }
 `;
 
-export const NewsItem = ({
-  isOpened,
-  theme,
-  text,
-  author,
-  category,
-  deleteNews,
-  id,
-  rating,
-  selected,
-  setRating,
-}) => (
-  <Container>
-    <Note label="Тема" value={theme} />
-    <div>{isOpened ? text : text.substring(0, 300)}</div>
-    <Note label="Автор" value={author} />
-    <Note label="Категория" value={category} />
-    <Tools>
-      <Button onClick={() => deleteNews(id)}>Удалить новость</Button>
-
-      <NavLink to={`/news/${isOpened ? "" : id}`}>
-        <Button>
-          {isOpened ? "Вернуться" : "Перейти"} на страницу новостей
-        </Button>
-      </NavLink>
-    </Tools>
-    <Stars id={id} selected={selected} rating={rating} setRating={setRating} />
-  </Container>
-);
+export const NewsItem = ({ news, isOpened, onManage, rating, onRating }) => {
+  const { theme, text, author, category, id, selected } = news;
+  return (
+    <Container>
+      <Note label="Тема" value={theme} />
+      <div>{isOpened ? text : text.substring(0, 300)}</div>
+      <Note label="Автор" value={author} />
+      <Note label="Категория" value={category} />
+      <Tools>
+        <Button onClick={() => onManage(id)}>Удалить новость</Button>
+        <NavLink to={`/news/${isOpened ? "" : id}`}>
+          <Button>
+            {isOpened ? "Вернуться" : "Перейти"} на страницу новостей
+          </Button>
+        </NavLink>
+      </Tools>
+      <Stars id={id} selected={selected} rating={rating} onRating={onRating} />
+    </Container>
+  );
+};

@@ -154,24 +154,25 @@ export const sharesReducer = (state = initialState, action) => {
     case DELETE_COMMENT_OF_SHARES:
       return {
         ...state,
-        shares: state.shares.map((share) => {
-          if (share.id === action.shareId) {
-            share.comment = share.comment.filter(
-              (comment) => comment.id !== action.commentId
-            );
-          }
-          return share;
-        }),
+        shares: state.shares.map((share) =>
+          share.id === action.shareId
+            ? {
+                ...share,
+                comment: share.comment.filter(
+                  (comment) => comment.id !== action.commentId
+                ),
+              }
+            : share
+        ),
       };
     case ADD_COMMENT_TO_SHARES:
       return {
         ...state,
-        shares: state.shares.map((share) => {
-          if (share.id === action.shareId) {
-            share.comment = [...share.comment, action.comment];
-          }
-          return share;
-        }),
+        shares: state.shares.map((share) =>
+          share.id === action.shareId
+            ? { ...share, comment: [...share.comment, action.comment] }
+            : share
+        ),
       };
     default:
       return state;

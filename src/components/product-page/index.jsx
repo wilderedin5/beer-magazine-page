@@ -1,28 +1,27 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
-  getBeersFromAPI,
-  setCurrentPage,
+  getBeers,
+  changePage,
   setAbvFilter,
 } from "../../redux/product-reducer";
-import { addProduct, deleteProduct } from "../../redux/cart-reducer";
+import { manageProduct } from "../../redux/cart-reducer";
 import { ProductPage } from "./product-page";
 
 const ProductPageContainer = (props) => {
   useEffect(() => {
-    props.getBeersFromAPI(props.currentPage, props.pageSize, props.abvFilter);
+    props.getBeers(props.currentPage, props.pageSize, props.abvFilter);
   }, [props.abvFilter]);
 
   const onPageChanged = (pageNumber) => {
-    props.setCurrentPage(pageNumber);
-    props.getBeersFromAPI(pageNumber, props.pageSize, props.abvFilter);
+    props.changePage(pageNumber);
+    props.getBeers(pageNumber, props.pageSize, props.abvFilter);
   };
 
   return (
     <ProductPage
-      addProduct={props.addProduct}
+      onManage={props.manageProduct}
       beers={props.beers}
-      deleteProduct={props.deleteProduct}
       onPageChanged={onPageChanged}
       setAbvFilter={props.setAbvFilter}
       pageSize={props.pageSize}
@@ -43,9 +42,8 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  getBeersFromAPI,
-  addProduct,
-  setCurrentPage,
+  getBeers,
+  changePage,
   setAbvFilter,
-  deleteProduct,
+  manageProduct,
 })(ProductPageContainer);

@@ -18,14 +18,10 @@ const Container = styled.div`
   right: 10px;
 `;
 
-export const Stars = ({ rating, id, selected, setRating }) => (
+export const Stars = ({ rating, id, selected, onRating }) => (
   <Container>
     {[...Array(rating)].map((star, i) => (
-      <Star
-        key={i}
-        onClick={() => setRating(id, i + 1)}
-        selected={i < selected}
-      >
+      <Star key={i} onClick={() => onRating(id, i + 1)} selected={i < selected}>
         &#9733;
       </Star>
     ))}

@@ -7,9 +7,10 @@ import { setLike, deleteComment, addComment } from "../../redux/shares-reducer";
 import { Share } from "./share";
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: ${(p) => !p.shareOpened && "repeat(2, 1fr)"};
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
 `;
 
 const Shares = ({ match, shares, addComment, deleteComment, setLike }) => {
@@ -19,14 +20,15 @@ const Shares = ({ match, shares, addComment, deleteComment, setLike }) => {
     : shares.filter((share) => String(share.id) === shareId);
 
   return (
-    <Container>
-      {formatShares.map((share) => (
+    <Container shareOpened={shareId}>
+      {formatShares.map((share, index) => (
         <Share
-          onAddComment={addComment}
+          onCommentAdd={addComment}
           onCommentDelete={deleteComment}
           onCommentLike={setLike}
           isOpened={shareId}
           share={share}
+          key={index}
         />
       ))}
     </Container>

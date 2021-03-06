@@ -3,16 +3,29 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
-import { Badge, Menu } from "antd";
+import { Menu } from "antd";
 import { Button } from "../common/type";
 
 const Container = styled.div`
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-const CartContainer = styled.div`
-  position: absolute;
-  right: 0;
+const CartLink = styled(Button)`
+  position: relative;
+  color: #fff;
+
+  :before {
+    content: '${(p) => p.count}';
+    position: absolute;
+    top: -6px;
+    left: -8px;
+    background: red;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 8px;
+  }
 `;
 
 const MenuItem = ({ to, children, ...rest }) => (
@@ -23,35 +36,27 @@ const MenuItem = ({ to, children, ...rest }) => (
   </Menu.Item>
 );
 
-const Cart = ({ cart }) => (
-  <CartContainer>
-    <Menu.Item>
-      <NavLink to="/cart">
-        <Badge count={cart.length} showZero>
-          <Button>
-            <ShoppingCartOutlined />
-          </Button>
-        </Badge>
-      </NavLink>
-    </Menu.Item>
-  </CartContainer>
+const Cart = ({ cartItems }) => (
+  <CartLink to="/cart" as={NavLink} count={cartItems.length}>
+    <ShoppingCartOutlined />
+  </CartLink>
 );
 
-const Header = ({ cart }) => (
+const Header = ({ cartItems }) => (
   <Container>
     <Menu theme="dark" mode="horizontal">
-      <Cart cart={cart} />
       <MenuItem to="">Главная</MenuItem>
       <MenuItem to="news">Новости пивоварения</MenuItem>
       <MenuItem to="chat">Чат пивоварения</MenuItem>
       <MenuItem to="share">Акции</MenuItem>
       <MenuItem to="contacts">Контакты</MenuItem>
     </Menu>
+    <Cart cartItems={cartItems} />
   </Container>
 );
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.cart,
+  cartItems: state.cart.cart,
 });
 
 export default connect(mapStateToProps, {})(Header);

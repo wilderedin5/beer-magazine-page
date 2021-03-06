@@ -7,7 +7,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 32px auto;
   grid-column-gap: 20px;
-  border: 1px solid gray;
+  border: 1px solid black;
   padding: 5px 10px;
 `;
 

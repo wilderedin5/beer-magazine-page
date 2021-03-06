@@ -1,7 +1,7 @@
 import { beerAPI } from "../API/API";
+import { formatBeers } from "../helpers/beer-formater";
 
-const ADD_ITEM_TO_CART = "cart-reducer/ADD_ITEM_TO_CART";
-const DELETE_ITEM_FROM_CART = "cart-reducer/DELETE_ITEM_FROM_CART";
+const MANAGE_CART_ITEM = "cart-reducer/MANAGE_CART_ITEM";
 
 let initialState = {
   cart: [],
@@ -9,34 +9,28 @@ let initialState = {
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_ITEM_TO_CART:
+    case MANAGE_CART_ITEM:
       return {
         ...state,
-        cart: [...state.cart, ...action.beer],
-      };
-    case DELETE_ITEM_FROM_CART:
-      return {
-        ...state,
-        cart: state.cart.filter((item) => item.id !== action.beerId),
+        cart: state.cart.some(({ id }) => id === action.id)
+          ? state.cart.filter(({ id }) => id !== action.id)
+          : [...state.cart, ...action.beer],
       };
     default:
       return state;
   }
 };
 
-export const successAddedItemToCart = (beer) => ({
-  type: ADD_ITEM_TO_CART,
+export const manage = (id, beer) => ({
+  type: MANAGE_CART_ITEM,
   beer,
+  id,
 });
 
-export const deleteProduct = (beerId) => ({
-  type: DELETE_ITEM_FROM_CART,
-  beerId,
-});
-
-export const addProduct = (beerId) => (dispatch) => {
-  beerAPI.getOneBeer(beerId).then((response) => {
-    dispatch(successAddedItemToCart(response.data));
+export const manageProduct = (id) => (dispatch) => {
+  beerAPI.getOneBeer(id).then((response) => {
+    const formattedResponse = formatBeers(response.data);
+    dispatch(manage(id, formattedResponse));
   });
 };
 

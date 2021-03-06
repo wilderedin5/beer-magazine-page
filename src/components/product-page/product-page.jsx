@@ -21,14 +21,18 @@ export const ProductPage = ({
   setAbvFilter,
   onPageChanged,
   total,
-  addProduct,
-  deleteProduct,
+  onManage,
   cartItems,
   beers,
 }) => {
   const onSubmit = ({ abv }) => {
     setAbvFilter(abv);
   };
+
+  const formatBeers = beers.map((beer) => ({
+    ...beer,
+    isReserve: cartItems.some(({ id }) => id === beer.id),
+  }));
 
   return (
     <div>
@@ -43,14 +47,8 @@ export const ProductPage = ({
       </Panel>
 
       <Products>
-        {beers.map((beer, index) => (
-          <Beer
-            beer={beer}
-            onDelete={deleteProduct}
-            onAdd={addProduct}
-            cartItems={cartItems}
-            key={index}
-          />
+        {formatBeers.map((beer, index) => (
+          <Beer beer={beer} onManage={onManage} key={index} />
         ))}
       </Products>
     </div>

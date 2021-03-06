@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { connect } from "react-redux";
-import { deleteProduct } from "../../redux/cart-reducer";
+import { Redirect } from "react-router";
+import { manageProduct } from "../../redux/cart-reducer";
 import { Beer } from "../beer";
 
 const Container = styled.div`
@@ -10,16 +11,24 @@ const Container = styled.div`
   grid-gap: 20px;
 `;
 
-const Cart = ({ cart, deleteProduct }) => (
+const Cart = ({ cartItems, manageProduct }) => (
   <Container>
-    {cart.map((beer, index) => (
-      <Beer beer={beer} onDelete={deleteProduct} key={index} />
-    ))}
+    {cartItems.length ? (
+      cartItems.map((beer, index) => (
+        <Beer
+          beer={{ ...beer, isReserve: true }}
+          onManage={manageProduct}
+          key={index}
+        />
+      ))
+    ) : (
+      <Redirect to="/" />
+    )}
   </Container>
 );
 
 const mapStateToProps = (state) => ({
-  cart: state.cart.cart,
+  cartItems: state.cart.cart,
 });
 
-export default connect(mapStateToProps, { deleteProduct })(Cart);
+export default connect(mapStateToProps, { manageProduct })(Cart);

@@ -1,64 +1,70 @@
-const ADD_MESSAGE_TO_CHAT = "chat-reducer/ADD_MESSAGE_TO_CHAT";
+const MANAGE_CHAT = "chat-reducer/MANAGE_CHAT";
 const TOGGLE_LIKE_MESSAGE = "chat-reducer/TOGGLE_LIKE_MESSAGE";
-const DELETE_MESSAGE_FROM_CHAT = "chat-reducer/DELETE_MESSAGE_FROM_CHAT";
-const DELETE_ALL_MESSAGES_FROM_CHAT =
-  "chat-reducer/DELETE_ALL_MESSAGES_FROM_CHAT";
+const ERASE_CHAT = "chat-reducer/ERASE_CHAT";
 
 let initialState = {
   messages: [
     {
       id: 1,
       author: "Denis",
-      text: "Это первый комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 34,
     },
     {
       id: 2,
       author: "Elena",
-      text: "Это второй комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 2,
     },
     {
       id: 3,
       author: "Sveta",
-      text: "Это третий комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 98,
     },
     {
       id: 4,
       author: "Ivan",
-      text: "Это четвертый комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 276,
     },
     {
       id: 5,
       author: "Dmitry",
-      text: "Это пятый комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 4,
     },
     {
       id: 6,
       author: "George",
-      text: "Это шестой комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 0,
     },
     {
       id: 7,
       author: "Vladimir",
-      text: "Это седьмой комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 1,
     },
     {
       id: 8,
       author: "Anna",
-      text: "Это восьмой комментс",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       hasLike: null,
       likeCount: 9,
     },
@@ -67,35 +73,29 @@ let initialState = {
 
 const chatReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_MESSAGE_TO_CHAT:
-      return {
-        ...state,
-        messages: [...state.messages, action.message],
-      };
     case TOGGLE_LIKE_MESSAGE:
       return {
         ...state,
-        messages: state.messages.map((message) => {
-          if (message.id === action.messageId) {
-            return {
-              ...message,
-              hasLike: action.hasLike,
-              likeCount: action.hasLike
-                ? ++message.likeCount
-                : --message.likeCount,
-            };
-          }
-          return message;
-        }),
-      };
-    case DELETE_MESSAGE_FROM_CHAT:
-      return {
-        ...state,
-        messages: state.messages.filter(
-          (message) => message.id !== action.messageId
+        messages: state.messages.map(({ message }) =>
+          message.id === action.messageId
+            ? {
+                ...message,
+                hasLike: action.hasLike,
+                likeCount: action.hasLike
+                  ? ++message.likeCount
+                  : --message.likeCount,
+              }
+            : message
         ),
       };
-    case DELETE_ALL_MESSAGES_FROM_CHAT:
+    case MANAGE_CHAT:
+      return {
+        ...state,
+        messages: state.messages.some(({ id }) => id === action.id)
+          ? state.messages.filter(({ id }) => id !== action.id)
+          : [...state.messages, action.message],
+      };
+    case ERASE_CHAT:
       return {
         ...state,
         messages: [],
@@ -105,9 +105,10 @@ const chatReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = (id, author, text, hasLike, likeCount) => ({
-  type: ADD_MESSAGE_TO_CHAT,
-  message: { id, author, text, hasLike, likeCount },
+export const manageChat = (id, message) => ({
+  type: MANAGE_CHAT,
+  id,
+  message,
 });
 
 export const setLike = (messageId, hasLike) => ({
@@ -116,13 +117,8 @@ export const setLike = (messageId, hasLike) => ({
   hasLike,
 });
 
-export const deleteMessage = (messageId) => ({
-  type: DELETE_MESSAGE_FROM_CHAT,
-  messageId,
-});
-
 export const eraseChat = () => ({
-  type: DELETE_ALL_MESSAGES_FROM_CHAT,
+  type: ERASE_CHAT,
 });
 
 export default chatReducer;
