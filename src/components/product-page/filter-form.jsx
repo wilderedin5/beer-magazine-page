@@ -5,7 +5,7 @@ import { Button } from "../common/type";
 
 const FilterForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
-    <Field name="abv" maxLength="60" placeholder="Min abv" />
+    <Field placeholder="Min abv" name="abv" maxLength="60" />
     <Button>Применить фильтр</Button>
   </form>
 );

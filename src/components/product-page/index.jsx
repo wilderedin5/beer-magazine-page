@@ -27,14 +27,14 @@ const ProductPageContainer = (props) => {
       pageSize={props.pageSize}
       total={props.total}
       currentPage={props.currentPage}
-      cartItems={props.cartItems}
+      cart={props.cart}
     />
   );
 };
 
 const mapStateToProps = (state) => ({
   beers: state.productPage.beers,
-  cartItems: state.cart.cart,
+  cart: state.cart.cart,
   currentPage: state.productPage.currentPage,
   total: state.productPage.total,
   pageSize: state.productPage.pageSize,

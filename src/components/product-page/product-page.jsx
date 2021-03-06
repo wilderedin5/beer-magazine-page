@@ -22,7 +22,7 @@ export const ProductPage = ({
   onPageChanged,
   total,
   onManage,
-  cartItems,
+  cart,
   beers,
 }) => {
   const onSubmit = ({ abv }) => {
@@ -31,7 +31,7 @@ export const ProductPage = ({
 
   const formatBeers = beers.map((beer) => ({
     ...beer,
-    isReserve: cartItems.some(({ id }) => id === beer.id),
+    isReserve: cart.some(({ id }) => id === beer.id),
   }));
 
   return (

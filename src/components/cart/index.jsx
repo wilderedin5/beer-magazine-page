@@ -11,10 +11,10 @@ const Container = styled.div`
   grid-gap: 20px;
 `;
 
-const Cart = ({ cartItems, manageProduct }) => (
+const Cart = ({ cart, manageProduct }) => (
   <Container>
-    {cartItems.length ? (
-      cartItems.map((beer, index) => (
+    {cart.length ? (
+      cart.map((beer, index) => (
         <Beer
           beer={{ ...beer, isReserve: true }}
           onManage={manageProduct}
@@ -28,7 +28,7 @@ const Cart = ({ cartItems, manageProduct }) => (
 );
 
 const mapStateToProps = (state) => ({
-  cartItems: state.cart.cart,
+  cart: state.cart.cart,
 });
 
 export default connect(mapStateToProps, { manageProduct })(Cart);

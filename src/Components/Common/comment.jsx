@@ -9,6 +9,10 @@ const Container = styled.div`
   grid-column-gap: 20px;
   border: 1px solid black;
   padding: 5px 10px;
+
+  & + & {
+    margin-top: 10px;
+  }
 `;
 
 const Avatar = styled.img`
@@ -30,12 +34,7 @@ const Icon = styled.img`
   width: 12px;
   height: 12px;
   margin-right: 5px;
-
-  ${(p) =>
-    p.hasLike &&
-    `
-    transform: rotate(180deg);  
-  `}
+  transform: ${(p) => p.liked && "rotate(180deg)"};
 `;
 
 const ToolsContainer = styled.div`
@@ -48,10 +47,10 @@ const ToolsContainer = styled.div`
   }
 `;
 
-const Tools = ({ likeCount, onLike, onRemove, hasLike }) => (
+const Tools = ({ likeCount, onLike, onRemove, liked }) => (
   <ToolsContainer>
     <span onClick={onLike}>
-      <Icon hasLike={hasLike} src={LikeIcon} />
+      <Icon liked={liked} src={LikeIcon} />
       {likeCount}
     </span>
     <span onClick={onRemove}>Remove</span>

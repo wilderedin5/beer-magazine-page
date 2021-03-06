@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { v4 } from "uuid";
 import { Comment } from "../common/comment";
 import { Note, Button } from "../common/type";
@@ -57,11 +57,11 @@ export const Share = ({
         </>
       )}
 
-      <NavLink to={`/share/${isOpened ? "" : id}`}>
+      <Link to={`/share/${isOpened ? "" : id}`}>
         <StyledButton>
           {isOpened ? "Вернуться" : "Перейти"} на страницу новостей
         </StyledButton>
-      </NavLink>
+      </Link>
     </Container>
   );
 };

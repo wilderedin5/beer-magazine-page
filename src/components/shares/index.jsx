@@ -15,6 +15,7 @@ const Container = styled.div`
 
 const Shares = ({ match, shares, addComment, deleteComment, setLike }) => {
   const shareId = match.params.id;
+
   const formatShares = !shareId
     ? shares
     : shares.filter((share) => String(share.id) === shareId);

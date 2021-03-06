@@ -5,15 +5,10 @@ import { Button } from "../common/type";
 
 const NewsForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
-    <Field maxLength="60" placeholder="Name" name="author" />
-    <Field maxLength="60" placeholder="Theme" name="theme" />
-    <Field maxLength="60" placeholder="Category" name="category" />
-    <Field
-      component="textarea"
-      maxLength="1000"
-      placeholder="Text"
-      name="text"
-    />
+    <Field placeholder="Name" maxLength="60" name="author" />
+    <Field placeholder="Theme" maxLength="60" name="theme" />
+    <Field placeholder="Category" maxLength="60" name="category" />
+    <Field placeholder="Text" name="text" component="textarea" />
     <Button>Отправить новость</Button>
   </form>
 );

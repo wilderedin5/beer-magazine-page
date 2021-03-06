@@ -11,7 +11,6 @@ const Container = styled.div`
 `;
 
 const Img = styled.img`
-  width: 50px;
   height: 130px;
   align-self: center;
 `;

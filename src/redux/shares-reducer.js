@@ -18,28 +18,28 @@ let initialState = {
           id: 1,
           text: "ну варят",
           author: "Гречка",
-          hasLike: false,
+          liked: false,
           likeCount: 31,
         },
         {
           id: 2,
           text: " варка варка",
           author: "Рис",
-          hasLike: false,
+          liked: false,
           likeCount: 71,
         },
         {
           id: 3,
           text: "вечно варят",
           author: "Макароны",
-          hasLike: false,
+          liked: false,
           likeCount: 13,
         },
         {
           id: 4,
           text: "опять варят",
           author: "Картошка",
-          hasLike: false,
+          liked: false,
           likeCount: 2,
         },
       ],
@@ -57,14 +57,14 @@ let initialState = {
           id: 1,
           text: "первый комментс",
           author: "Елена",
-          hasLike: false,
+          liked: false,
           likeCount: 113,
         },
         {
           id: 2,
           text: "здесь чат пивоваров",
           author: "Иван",
-          hasLike: false,
+          liked: false,
           likeCount: 122,
         },
       ],
@@ -82,7 +82,7 @@ let initialState = {
           id: 1,
           text: "ну варят",
           author: "Гречка",
-          hasLike: false,
+          liked: false,
           likeCount: 321,
         },
       ],
@@ -99,28 +99,28 @@ let initialState = {
           id: 1,
           text: "ну варят",
           author: "Гречка",
-          hasLike: false,
+          liked: false,
           likeCount: 1,
         },
         {
           id: 2,
           text: " варка варка",
           author: "Рис",
-          hasLike: false,
+          liked: false,
           likeCount: 11,
         },
         {
           id: 3,
           text: "вечно варят",
           author: "Макароны",
-          hasLike: false,
+          liked: false,
           likeCount: 54,
         },
         {
           id: 4,
           text: "опять варят",
           author: "Картошка",
-          hasLike: false,
+          liked: false,
           likeCount: 81,
         },
       ],
@@ -137,10 +137,10 @@ export const sharesReducer = (state = initialState, action) => {
           if (share.id === action.shareId) {
             share.comment.map((comment) => {
               if (comment.id === action.commentId) {
-                comment.hasLike = !comment.hasLike;
+                comment.liked = !comment.liked;
                 return {
                   ...comment,
-                  likeCount: comment.hasLike
+                  likeCount: comment.liked
                     ? ++comment.likeCount
                     : --comment.likeCount,
                 };
@@ -191,10 +191,10 @@ export const deleteComment = (shareId, commentId) => ({
   commentId,
 });
 
-export const addComment = (id, text, author, hasLike, likeCount, shareId) => ({
+export const addComment = (id, text, author, liked, likeCount, shareId) => ({
   type: ADD_COMMENT_TO_SHARES,
   shareId,
-  comment: { id, text, author, hasLike, likeCount },
+  comment: { id, text, author, liked, likeCount },
 });
 
 export default sharesReducer;

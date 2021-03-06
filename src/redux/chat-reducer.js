@@ -9,7 +9,7 @@ let initialState = {
       author: "Denis",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 34,
     },
     {
@@ -17,7 +17,7 @@ let initialState = {
       author: "Elena",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 2,
     },
     {
@@ -25,7 +25,7 @@ let initialState = {
       author: "Sveta",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 98,
     },
     {
@@ -33,7 +33,7 @@ let initialState = {
       author: "Ivan",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 276,
     },
     {
@@ -41,7 +41,7 @@ let initialState = {
       author: "Dmitry",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 4,
     },
     {
@@ -49,7 +49,7 @@ let initialState = {
       author: "George",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 0,
     },
     {
@@ -57,7 +57,7 @@ let initialState = {
       author: "Vladimir",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 1,
     },
     {
@@ -65,7 +65,7 @@ let initialState = {
       author: "Anna",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
-      hasLike: null,
+      liked: null,
       likeCount: 9,
     },
   ],
@@ -80,8 +80,8 @@ const chatReducer = (state = initialState, action) => {
           message.id === action.messageId
             ? {
                 ...message,
-                hasLike: action.hasLike,
-                likeCount: action.hasLike
+                liked: action.liked,
+                likeCount: action.liked
                   ? ++message.likeCount
                   : --message.likeCount,
               }
@@ -111,10 +111,10 @@ export const manageChat = (id, message) => ({
   message,
 });
 
-export const setLike = (messageId, hasLike) => ({
+export const setLike = (messageId, liked) => ({
   type: TOGGLE_LIKE_MESSAGE,
   messageId,
-  hasLike,
+  liked,
 });
 
 export const eraseChat = () => ({

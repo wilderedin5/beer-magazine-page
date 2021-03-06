@@ -28,8 +28,13 @@ export const Button = styled.button`
   border: 1px solid gray;
   line-height: 1.5;
   color: #000;
+
   :disabled {
     background: #000;
     color: #fff;
+  }
+
+  & + & {
+    margin-left: 10px;
   }
 `;

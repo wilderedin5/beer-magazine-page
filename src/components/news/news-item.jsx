@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Note, Button } from "../common/type";
 import { Stars } from "./stars";
 
@@ -28,11 +28,11 @@ export const NewsItem = ({ news, isOpened, onManage, rating, onRating }) => {
       <Note label="Категория" value={category} />
       <Tools>
         <Button onClick={() => onManage(id)}>Удалить новость</Button>
-        <NavLink to={`/news/${isOpened ? "" : id}`}>
+        <Link to={`/news/${isOpened ? "" : id}`}>
           <Button>
             {isOpened ? "Вернуться" : "Перейти"} на страницу новостей
           </Button>
-        </NavLink>
+        </Link>
       </Tools>
       <Stars id={id} selected={selected} rating={rating} onRating={onRating} />
     </Container>

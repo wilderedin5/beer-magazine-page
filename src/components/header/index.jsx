@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Menu } from "antd";
@@ -30,19 +30,19 @@ const CartLink = styled(Button)`
 
 const MenuItem = ({ to, children, ...rest }) => (
   <Menu.Item {...rest}>
-    <NavLink to={`/${to}`} activeClassName="active">
+    <Link to={`/${to}`} activeClassName="active">
       {children}
-    </NavLink>
+    </Link>
   </Menu.Item>
 );
 
-const Cart = ({ cartItems }) => (
-  <CartLink to="/cart" as={NavLink} count={cartItems.length}>
+const Cart = ({ cart }) => (
+  <CartLink to="/cart" as={Link} count={cart.length}>
     <ShoppingCartOutlined />
   </CartLink>
 );
 
-const Header = ({ cartItems }) => (
+const Header = ({ cart }) => (
   <Container>
     <Menu theme="dark" mode="horizontal">
       <MenuItem to="">Главная</MenuItem>
@@ -51,12 +51,12 @@ const Header = ({ cartItems }) => (
       <MenuItem to="share">Акции</MenuItem>
       <MenuItem to="contacts">Контакты</MenuItem>
     </Menu>
-    <Cart cartItems={cartItems} />
+    <Cart cart={cart} />
   </Container>
 );
 
 const mapStateToProps = (state) => ({
-  cartItems: state.cart.cart,
+  cart: state.cart.cart,
 });
 
 export default connect(mapStateToProps, {})(Header);
