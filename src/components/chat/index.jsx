@@ -6,11 +6,11 @@ import { Comment } from "../common/comment";
 import ChatForm from "./chat-form";
 
 const Chat = ({ eraseChat, manageChat, setLike, messages }) => {
-  const onSubmit = ({ author, text }) => {
+  const onSubmit = ({ name, text }) => {
     const id = v4();
     manageChat(id, {
       id,
-      author,
+      name,
       text,
       liked: null,
       likeCount: 0,
@@ -19,10 +19,11 @@ const Chat = ({ eraseChat, manageChat, setLike, messages }) => {
 
   return (
     <div>
-      {messages.map(({ id, liked, ...m }) => (
+      {messages.map(({ id, liked, ...m }, index) => (
         <Comment
           onLike={() => setLike(id, !liked)}
           onRemove={() => manageChat(id)}
+          key={index}
           {...m}
         />
       ))}

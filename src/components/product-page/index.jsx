@@ -13,7 +13,7 @@ const ProductPageContainer = (props) => {
     props.getBeers(props.currentPage, props.pageSize, props.abvFilter);
   }, [props.abvFilter]);
 
-  const onPageChanged = (pageNumber) => {
+  const onPageChange = (pageNumber) => {
     props.changePage(pageNumber);
     props.getBeers(pageNumber, props.pageSize, props.abvFilter);
   };
@@ -22,7 +22,7 @@ const ProductPageContainer = (props) => {
     <ProductPage
       onManage={props.manageProduct}
       beers={props.beers}
-      onPageChanged={onPageChanged}
+      onPage={onPageChange}
       setAbvFilter={props.setAbvFilter}
       pageSize={props.pageSize}
       total={props.total}

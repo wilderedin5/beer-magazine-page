@@ -18,15 +18,15 @@ const Products = styled.div`
 `;
 
 export const ProductPage = ({
-  setAbvFilter,
-  onPageChanged,
+  onFilter,
+  onPage,
   total,
   onManage,
   cart,
   beers,
 }) => {
   const onSubmit = ({ abv }) => {
-    setAbvFilter(abv);
+    onFilter(abv);
   };
 
   const formatBeers = beers.map((beer) => ({
@@ -37,15 +37,9 @@ export const ProductPage = ({
   return (
     <div>
       <Panel>
-        <Pagination
-          defaultCurrent={1}
-          onChange={onPageChanged}
-          total={total}
-          showSizeChanger={false}
-        />
+        <Pagination onChange={onPage} total={total} showSizeChanger={false} />
         <FilterForm onSubmit={onSubmit} />
       </Panel>
-
       <Products>
         {formatBeers.map((beer, index) => (
           <Beer beer={beer} onManage={onManage} key={index} />

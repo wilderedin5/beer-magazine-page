@@ -57,11 +57,11 @@ const Tools = ({ likeCount, onLike, onRemove, liked }) => (
   </ToolsContainer>
 );
 
-export const Comment = ({ avatar, author, text, className, ...props }) => (
+export const Comment = ({ avatar, name, text, className, ...props }) => (
   <Container className={className}>
     <Avatar src={avatar || NoImg} />
     <Content>
-      <Name>{author}</Name>
+      <Name>{name}</Name>
       <div>{text}</div>
       <Tools {...props} />
     </Content>

@@ -6,7 +6,7 @@ import { Button } from "../common/type";
 const ShareForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Field placeholder="Text" name="text" component="textarea" />
-    <Field placeholder="Name" name="author" maxLength="60" />
+    <Field placeholder="Name" name="name" maxLength="60" />
     <Button>Add Comment</Button>
   </form>
 );

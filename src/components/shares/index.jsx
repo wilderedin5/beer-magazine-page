@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { connect } from "react-redux";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { setLike, deleteComment, addComment } from "../../redux/shares-reducer";
 import { Share } from "./share";
 
@@ -13,12 +12,12 @@ const Container = styled.div`
   grid-row-gap: 20px;
 `;
 
-const Shares = ({ match, shares, addComment, deleteComment, setLike }) => {
-  const shareId = match.params.id;
+const Shares = ({ shares, addComment, deleteComment, setLike }) => {
+  const { shareId } = useParams();
 
-  const formatShares = !shareId
-    ? shares
-    : shares.filter((share) => String(share.id) === shareId);
+  const formatShares = shares.filter(({ id }) =>
+    shareId ? id === +shareId : true
+  );
 
   return (
     <Container shareOpened={shareId}>
@@ -40,11 +39,8 @@ const mapStateToProps = (state) => ({
   shares: state.shares.shares,
 });
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, {
-    setLike,
-    deleteComment,
-    addComment,
-  })
-)(Shares);
+export default connect(mapStateToProps, {
+  setLike,
+  deleteComment,
+  addComment,
+})(Shares);

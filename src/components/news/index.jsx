@@ -1,32 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
-import { compose } from "redux";
-import { withRouter } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { v4 } from "uuid";
 import { manageNews, changeRating } from "../../redux/news-reducer";
 import { NewsItem } from "./news-item";
 import NewsForm from "./news-form";
 
-const News = ({ match, rating, changeRating, news, manageNews }) => {
-  const newsId = match.params.id;
-  const handleSubmit = ({ text, theme, author, category }) => {
+const News = ({ rating, changeRating, news, manageNews }) => {
+  const { newsId } = useParams();
+
+  const handleSubmit = ({ text, theme, name, category }) => {
     const id = v4();
-    manageNews(id, { id, text, theme, author, category });
+    manageNews(id, { id, text, theme, name, category });
   };
 
-  const formattedNews = news.filter((news) =>
-    newsId ? newsId === String(news.id) : true
+  const formattedNews = news.filter(({ id }) =>
+    newsId ? newsId === String(id) : true
   );
 
   return (
     <div>
-      {formattedNews.map((news) => (
+      {formattedNews.map((news, index) => (
         <NewsItem
           news={news}
           isOpened={newsId}
           onManage={manageNews}
           rating={rating}
           onRating={changeRating}
+          key={index}
         />
       ))}
       {!newsId && <NewsForm onSubmit={handleSubmit} />}
@@ -39,7 +40,4 @@ const mapStateToProps = (state) => ({
   rating: state.news.rating,
 });
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, { manageNews, changeRating })
-)(News);
+export default connect(mapStateToProps, { manageNews, changeRating })(News);

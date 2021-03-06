@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Menu } from "antd";
@@ -30,14 +30,14 @@ const CartLink = styled(Button)`
 
 const MenuItem = ({ to, children, ...rest }) => (
   <Menu.Item {...rest}>
-    <Link to={`/${to}`} activeClassName="active">
+    <NavLink to={`/${to}`} activeClassName="active">
       {children}
-    </Link>
+    </NavLink>
   </Menu.Item>
 );
 
 const Cart = ({ cart }) => (
-  <CartLink to="/cart" as={Link} count={cart.length}>
+  <CartLink to="/cart" as={NavLink} count={cart.length}>
     <ShoppingCartOutlined />
   </CartLink>
 );

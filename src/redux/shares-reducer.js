@@ -17,28 +17,28 @@ let initialState = {
         {
           id: 1,
           text: "ну варят",
-          author: "Гречка",
+          name: "Гречка",
           liked: false,
           likeCount: 31,
         },
         {
           id: 2,
           text: " варка варка",
-          author: "Рис",
+          name: "Рис",
           liked: false,
           likeCount: 71,
         },
         {
           id: 3,
           text: "вечно варят",
-          author: "Макароны",
+          name: "Макароны",
           liked: false,
           likeCount: 13,
         },
         {
           id: 4,
           text: "опять варят",
-          author: "Картошка",
+          name: "Картошка",
           liked: false,
           likeCount: 2,
         },
@@ -56,14 +56,14 @@ let initialState = {
         {
           id: 1,
           text: "первый комментс",
-          author: "Елена",
+          name: "Елена",
           liked: false,
           likeCount: 113,
         },
         {
           id: 2,
           text: "здесь чат пивоваров",
-          author: "Иван",
+          name: "Иван",
           liked: false,
           likeCount: 122,
         },
@@ -81,7 +81,7 @@ let initialState = {
         {
           id: 1,
           text: "ну варят",
-          author: "Гречка",
+          name: "Гречка",
           liked: false,
           likeCount: 321,
         },
@@ -98,28 +98,28 @@ let initialState = {
         {
           id: 1,
           text: "ну варят",
-          author: "Гречка",
+          name: "Гречка",
           liked: false,
           likeCount: 1,
         },
         {
           id: 2,
           text: " варка варка",
-          author: "Рис",
+          name: "Рис",
           liked: false,
           likeCount: 11,
         },
         {
           id: 3,
           text: "вечно варят",
-          author: "Макароны",
+          name: "Макароны",
           liked: false,
           likeCount: 54,
         },
         {
           id: 4,
           text: "опять варят",
-          author: "Картошка",
+          name: "Картошка",
           liked: false,
           likeCount: 81,
         },
@@ -191,10 +191,10 @@ export const deleteComment = (shareId, commentId) => ({
   commentId,
 });
 
-export const addComment = (id, text, author, liked, likeCount, shareId) => ({
+export const addComment = (id, text, name, liked, likeCount, shareId) => ({
   type: ADD_COMMENT_TO_SHARES,
   shareId,
-  comment: { id, text, author, liked, likeCount },
+  comment: { id, text, name, liked, likeCount },
 });
 
 export default sharesReducer;

@@ -6,7 +6,7 @@ let initialState = {
   messages: [
     {
       id: 1,
-      author: "Denis",
+      name: "Denis",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,
@@ -14,7 +14,7 @@ let initialState = {
     },
     {
       id: 2,
-      author: "Elena",
+      name: "Elena",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,
@@ -22,7 +22,7 @@ let initialState = {
     },
     {
       id: 3,
-      author: "Sveta",
+      name: "Sveta",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,
@@ -30,7 +30,7 @@ let initialState = {
     },
     {
       id: 4,
-      author: "Ivan",
+      name: "Ivan",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,
@@ -38,7 +38,7 @@ let initialState = {
     },
     {
       id: 5,
-      author: "Dmitry",
+      name: "Dmitry",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,
@@ -46,7 +46,7 @@ let initialState = {
     },
     {
       id: 6,
-      author: "George",
+      name: "George",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,
@@ -54,7 +54,7 @@ let initialState = {
     },
     {
       id: 7,
-      author: "Vladimir",
+      name: "Vladimir",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,
@@ -62,7 +62,7 @@ let initialState = {
     },
     {
       id: 8,
-      author: "Anna",
+      name: "Anna",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed ex euismod, pharetra ligula eget, finibus elit. In mattis tincidunt ex suscipit dictum. In hac habitasse platea dictumst. Nam scelerisque non metus ut luctus.",
       liked: null,

@@ -5,7 +5,7 @@ import { Button } from "../common/type";
 
 const NewsForm = ({ handleSubmit }) => (
   <form onSubmit={handleSubmit}>
-    <Field placeholder="Name" maxLength="60" name="author" />
+    <Field placeholder="Name" maxLength="60" name="name" />
     <Field placeholder="Theme" maxLength="60" name="theme" />
     <Field placeholder="Category" maxLength="60" name="category" />
     <Field placeholder="Text" name="text" component="textarea" />

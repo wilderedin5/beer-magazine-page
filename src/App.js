@@ -19,9 +19,9 @@ const App = () => {
       </Header>
       <Content className={style.content}>
         <Route path="/cart" render={() => <CartPage />} />
-        <Route path="/news/:id?" render={() => <NewsPage />} />
+        <Route path="/news/:newsId?" render={() => <NewsPage />} />
         <Route path="/chat" render={() => <ChatPage />} />
-        <Route path="/share/:id?" render={() => <SharePage />} />
+        <Route path="/share/:shareId?" render={() => <SharePage />} />
         <Route path="/contacts" render={() => <ContactPage />} />
         <Route exact path="/" render={() => <ProductPage />} />
       </Content>

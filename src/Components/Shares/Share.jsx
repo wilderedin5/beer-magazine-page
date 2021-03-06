@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { v4 } from "uuid";
 import { Comment } from "../common/comment";
 import { Note, Button } from "../common/type";
@@ -32,8 +32,8 @@ export const Share = ({
   isOpened,
 }) => {
   const { desc, img, name, id, time, comment } = share;
-  const onSubmit = ({ text, author }) => {
-    onCommentAdd(v4(), text, author, false, 0, +isOpened);
+  const onSubmit = ({ text, name }) => {
+    onCommentAdd(v4(), text, name, false, 0, +isOpened);
   };
 
   return (
@@ -57,11 +57,11 @@ export const Share = ({
         </>
       )}
 
-      <Link to={`/share/${isOpened ? "" : id}`}>
+      <NavLink to={`/share/${isOpened ? "" : id}`}>
         <StyledButton>
           {isOpened ? "Вернуться" : "Перейти"} на страницу новостей
         </StyledButton>
-      </Link>
+      </NavLink>
     </Container>
   );
 };
